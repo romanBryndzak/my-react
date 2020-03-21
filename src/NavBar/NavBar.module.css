@@ -1,0 +1,9 @@
+.navBar {
+    grid-area: n;
+    background-color: green;
+}
+
+.tools {
+    margin: 8px;
+    font-size: 20px;
+}

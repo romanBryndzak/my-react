@@ -1,0 +1,11 @@
+.header {
+    grid-area: h;
+    background-color: darkorchid;
+}
+
+.avatar{
+    width: 130px;
+    height: 100px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
