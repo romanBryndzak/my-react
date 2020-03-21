@@ -1,6 +1,7 @@
 import React from "react";
 import P from "./Portfolio.module.css";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
+import MyPost from "./ProfileInfo/My post/My post";
 
 const Portfolio = () => {
     return (
@@ -8,7 +9,9 @@ const Portfolio = () => {
             <div>
                 <ProfileInfo/>
             </div>
-            <div>My post</div>
+            <div>
+                <MyPost/>
+            </div>
             <div>New post</div>
             <div>post1</div>
             <div>post2</div>
