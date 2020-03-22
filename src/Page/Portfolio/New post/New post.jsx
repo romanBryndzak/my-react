@@ -1,5 +1,5 @@
 import React from "react";
-import NP from "./New post.module.css";
+import np from "./New post.module.css";
 
 const NewPost = () => {
     return (

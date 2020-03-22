@@ -3,11 +3,12 @@
 }
 
 .img1 {
-    width: 70%;
-    margin: 1%;
+    align-items: center;
+    width: 99%;
+    padding: 3px;
 }
 
 .img2 {
     width: 25%;
-    margin: 1%;
+    margin: 3px;
 }

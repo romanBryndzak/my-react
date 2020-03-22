@@ -19,9 +19,12 @@ function App(props) {
             <div className={'page'}>
                 <Route path={'/portfolio'} render={() =>
                     <Portfolio
-                    posts={props.state.portfolio.posts}/>
+                        posts={props.state.portfolio.posts}/>
                 }/>
-                <Route path={'/messages'} render={Messages}/>
+                <Route path={'/messages'} render={() =>
+                    <Messages
+                    messages={props.state.messages.messages}/>
+                }/>
                 <Route path={'/news'} render={News}/>
                 <Route path={'/music'} render={Music}/>
                 <Route path={'/settings'} render={Settings}/>
