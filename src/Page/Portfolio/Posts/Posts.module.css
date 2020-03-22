@@ -1,0 +1,15 @@
+.posts {
+    padding: 5px;
+    font-size: 14px;
+}
+
+.ava {
+    border-radius: 45%;
+    width: 3rem;
+    height: 3rem;
+}
+
+.like {
+    border-radius: 50%;
+    width: 1rem;
+}

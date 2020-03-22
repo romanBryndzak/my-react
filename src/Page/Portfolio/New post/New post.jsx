@@ -9,14 +9,11 @@ const NewPost = () => {
 
                 </textarea>
                 <div>
-                    <button className={NP.btn}>
+                    <button>
                         Add Post
                     </button>
                 </div>
             </div>
-            <div>post1</div>
-            <div>post2</div>
-            <div>post3</div>
         </div>
     )
 };

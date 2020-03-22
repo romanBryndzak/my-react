@@ -1,8 +1,10 @@
 import React from "react";
-import MP from "./My post.module.css";
-import NewPost from "./New post/New post";
+import mp from "./My post.module.css";
+import NewPost from "../New post/New post";
+import Posts from "../Posts/Posts";
 
-const MyPost = () => {
+const MyPost = (props) => {
+    const PostElement = props.posts.map( p => <Posts id={p.id} message={p.message} like={p.like} key={p.id}/>);
     return (
         <div>
             <div>
@@ -10,6 +12,9 @@ const MyPost = () => {
             </div>
             <div>
                 <NewPost/>
+            </div>
+            <div>
+                {PostElement}
             </div>
         </div>
     )

@@ -11,13 +11,16 @@ import Settings from "./Page/Settings/Settings";
 import {Route} from "react-router-dom";
 
 
-function App() {
+function App(props) {
     return (
         <div className='app-wrapper'>
             <Header/>
             <Menu/>
             <div className={'page'}>
-                <Route path={'/portfolio'} render={Portfolio}/>
+                <Route path={'/portfolio'} render={() =>
+                    <Portfolio
+                    posts={props.state.portfolio.posts}/>
+                }/>
                 <Route path={'/messages'} render={Messages}/>
                 <Route path={'/news'} render={News}/>
                 <Route path={'/music'} render={Music}/>
