@@ -1,7 +1,7 @@
 import React from "react";
 import P from "./Portfolio.module.css";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
-import MyPost from "./ProfileInfo/My post/My post";
+import MyPost from "./My post/My post";
 
 const Portfolio = () => {
     return (
@@ -12,10 +12,6 @@ const Portfolio = () => {
             <div>
                 <MyPost/>
             </div>
-            <div>New post</div>
-            <div>post1</div>
-            <div>post2</div>
-            <div>post3</div>
         </div>
     )
 };

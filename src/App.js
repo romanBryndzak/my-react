@@ -1,16 +1,28 @@
 import React from 'react';
 import './App.css';
-import Header from "./Header/Header";
-import NavBar from "./NavBar/NavBar";
-import Portfolio from "./NavBar/Portfolio/Portfolio";
+import Header from "./components/Header/Header";
+import Menu from "./components/Menu/Menu";
+import Portfolio from "./Page/Portfolio/Portfolio";
+import Messages from "./Page/Messages/Messages";
+import MyFriends from "./Page/My friends/My friends";
+import News from "./Page/News/News";
+import Music from "./Page/Music/Music";
+import Settings from "./Page/Settings/Settings";
+import {Route} from "react-router-dom";
+
 
 function App() {
     return (
         <div className='app-wrapper'>
-           <Header/>
-            <NavBar/>
-            <div className={'navBarTools'}>
-            <Portfolio/>
+            <Header/>
+            <Menu/>
+            <div className={'page'}>
+                <Route path={'/portfolio'} render={Portfolio}/>
+                <Route path={'/messages'} render={Messages}/>
+                <Route path={'/news'} render={News}/>
+                <Route path={'/music'} render={Music}/>
+                <Route path={'/settings'} render={Settings}/>
+                <Route path={'/myFriends'} render={MyFriends}/>
             </div>
         </div>
     );
