@@ -1,0 +1,6 @@
+.wrapper {
+    display: grid;
+
+    grid-template-areas: "nM nM" "i M";
+    grid-template-columns: 2fr 10fr;
+}

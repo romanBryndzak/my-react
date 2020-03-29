@@ -1,0 +1,21 @@
+.wrapper {
+    grid-area: i;
+    font-size: 20px;
+
+}
+
+.wrapper a {
+    text-decoration: none;
+}
+
+.ava {
+    width: 45px;
+    height: 49px;
+    border-radius: 35px;
+    border: gray solid 2px;
+    margin: 5px;
+}
+
+.active {
+    color: blue;
+}

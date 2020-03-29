@@ -23,7 +23,8 @@ function App(props) {
                 }/>
                 <Route path={'/messages'} render={() =>
                     <Messages
-                    messages={props.state.messages.messages}/>
+                        interlocutors={props.state.messages.interlocutors}
+                        messages={props.state.messages.messages}/>
                 }/>
                 <Route path={'/news'} render={News}/>
                 <Route path={'/music'} render={Music}/>

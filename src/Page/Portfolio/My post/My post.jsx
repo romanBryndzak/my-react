@@ -13,7 +13,7 @@ const MyPost = (props) => {
             <div>
                 <NewPost/>
             </div>
-            <div>
+            <div className={mp.postElement}>
                 {PostElement}
             </div>
         </div>

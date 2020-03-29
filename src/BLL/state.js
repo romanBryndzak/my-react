@@ -8,12 +8,20 @@ let state = {
     },
 
     messages: {
+        interlocutors: [
+            {id: 0, name: 'Roman'},
+            {id: 1, name: 'Ros'},
+            {id: 2, name: 'Mike'},
+            {id: 3, name: 'Pavlo'},
+            {id: 4, name: 'Snezhka'},
+            {id: 5, name: 'Illia'},
+        ],
         messages: [
-            {id:0, message: 'Hello!'},
-            {id:1, message: 'What do you do?'},
-            {id:2, message: 'I study React.'},
-            {id:3, message: 'How old are you?'},
-            {id:4, message: 'I don`t  answer personal questions!'}
+            {id: 0, message: 'Hello!'},
+            {id: 1, message: 'What do you do?'},
+            {id: 2, message: 'I study React.'},
+            {id: 3, message: 'How old are you?'},
+            {id: 4, message: 'I don`t  answer personal questions!'}
         ]
     }
 };
