@@ -4,7 +4,8 @@ let state = {
             {id: 0, message: 'Hello!', like: 10},
             {id: 1, message: 'How are you.', like: 8},
             {id: 2, message: 'I am fine, thank you. And you?', like: 0}
-        ]
+        ],
+        newPostText: 'Hello React!'
     },
 
     messages: {
@@ -27,3 +28,16 @@ let state = {
 };
 
 export default state;
+
+export const addPost = () => {
+    let newPost = {
+        id: 3,
+        message: state.portfolio.newPostText,
+        like: 0
+    };
+    state.portfolio.posts.push(newPost);
+};
+
+export const updateNewText = (newText) => {
+    state.portfolio.newPostText = (newText);
+};

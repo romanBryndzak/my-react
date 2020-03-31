@@ -19,7 +19,11 @@ function App(props) {
             <div className={'page'}>
                 <Route path={'/portfolio'} render={() =>
                     <Portfolio
-                        posts={props.state.portfolio.posts}/>
+                        posts={props.state.portfolio.posts}
+                        newPostText={props.state.portfolio.newPostText}
+                        addPost={props.addPost}
+                        updateNewText={props.updateNewText}
+                    />
                 }/>
                 <Route path={'/messages'} render={() =>
                     <Messages
