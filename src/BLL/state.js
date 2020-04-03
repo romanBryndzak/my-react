@@ -1,3 +1,6 @@
+let renderState = () => {
+};
+
 let state = {
     portfolio: {
         posts: [
@@ -27,8 +30,7 @@ let state = {
     }
 };
 
-export default state;
-
+window.state = state;
 export const addPost = () => {
     let newPost = {
         id: 3,
@@ -36,8 +38,16 @@ export const addPost = () => {
         like: 0
     };
     state.portfolio.posts.push(newPost);
+    renderState(state);
 };
 
 export const updateNewText = (newText) => {
     state.portfolio.newPostText = (newText);
+    renderState(state);
 };
+
+export const subscribe = (observer) => {
+    renderState = observer;
+};
+
+export default state;
