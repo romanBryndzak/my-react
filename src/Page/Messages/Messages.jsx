@@ -2,6 +2,7 @@ import React from "react";
 import M from "./Messages.module.css";
 import Message from "./Message/Message";
 import Interlocutor from "./Interlocutor/Interlocutor";
+import AddNewMessage from "./AddNewMessage/AddNewMessage";
 
 const Messages = (props) => {
 
@@ -12,14 +13,16 @@ const Messages = (props) => {
 
     return (
         <div className={M.wrapper}>
+            <AddNewMessage
+                newMessageText={props.newMessageText}
+                addMessage={props.addMessage}
+                updateNewMessageText={props.updateNewMessageText}
+            />
             <div>
                 {InterlocutorElement}
             </div>
             <div>
                 {MessageElement}
-            </div>
-            <div>
-
             </div>
         </div>
     )

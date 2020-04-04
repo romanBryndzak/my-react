@@ -26,11 +26,27 @@ let state = {
             {id: 2, message: 'I study React.'},
             {id: 3, message: 'How old are you?'},
             {id: 4, message: 'I don`t  answer personal questions!'}
-        ]
+        ],
+        newMessageText: 'Hello. My name Illia, I am from Ukraine.'
     }
 };
 
 window.state = state;
+
+export const addMessage = () => {
+    let newMessage = {
+        id: 5,
+        message: state.messages.newMessageText,
+    };
+    state.messages.messages.push(newMessage);
+    renderState(state);
+};
+
+export const updateNewMessageText = (newText) => {
+    state.messages.newMessageText = (newText);
+    renderState(state);
+};
+
 export const addPost = () => {
     let newPost = {
         id: 3,

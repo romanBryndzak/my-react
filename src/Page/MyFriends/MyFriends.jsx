@@ -1,5 +1,5 @@
 import React from "react";
-import MF from "./My friends.module.css";
+import MF from "./MyFriends.module.css";
 
 const MyFriends = () => {
     return (

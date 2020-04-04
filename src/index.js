@@ -4,7 +4,9 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {BrowserRouter} from "react-router-dom";
-import state, {addPost, subscribe, updateNewText} from "./BLL/state";
+import state,
+{addMessage, addPost, subscribe, updateNewMessageText, updateNewText}
+    from "./BLL/state";
 
 let renderDomTree = (state) => {
     ReactDOM.render((
@@ -13,6 +15,8 @@ let renderDomTree = (state) => {
                     state={state}
                     addPost={addPost}
                     updateNewText={updateNewText}
+                    addMessage={addMessage}
+                    updateNewMessageText={updateNewMessageText}
                 />
             </BrowserRouter>),
         document.getElementById('root'));

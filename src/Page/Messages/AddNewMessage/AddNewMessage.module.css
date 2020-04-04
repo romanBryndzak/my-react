@@ -1,0 +1,14 @@
+.wrapper {
+    grid-area: aNM;
+}
+
+.text {
+    width: 165px;
+    height: 75px;;
+}
+
+.but {
+    border-radius: 20px;
+    background-color: white;
+    margin: 5px;
+}

@@ -4,7 +4,7 @@ import Header from "./components/Header/Header";
 import Menu from "./components/Menu/Menu";
 import Portfolio from "./Page/Portfolio/Portfolio";
 import Messages from "./Page/Messages/Messages";
-import MyFriends from "./Page/My friends/My friends";
+import MyFriends from "./Page/MyFriends/MyFriends";
 import News from "./Page/News/News";
 import Music from "./Page/Music/Music";
 import Settings from "./Page/Settings/Settings";
@@ -28,7 +28,11 @@ function App(props) {
                 <Route path={'/messages'} render={() =>
                     <Messages
                         interlocutors={props.state.messages.interlocutors}
-                        messages={props.state.messages.messages}/>
+                        messages={props.state.messages.messages}
+                        newMessageText={props.state.messages.newMessageText}
+                        addMessage={props.addMessage}
+                        updateNewMessageText={props.updateNewMessageText}
+                    />
                 }/>
                 <Route path={'/news'} render={News}/>
                 <Route path={'/music'} render={Music}/>

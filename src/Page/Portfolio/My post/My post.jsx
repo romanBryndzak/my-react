@@ -1,6 +1,6 @@
 import React from "react";
-import mp from "./My post.module.css";
-import NewPost from "../New post/New post";
+import mp from "./MyPost.module.css";
+import NewPost from "../New post/NewPost";
 import Posts from "../Posts/Posts";
 
 const MyPost = (props) => {

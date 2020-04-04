@@ -1,5 +1,5 @@
 import React from "react";
-import np from "./New post.module.css";
+import NP from "./NewPost.module.css";
 
 const NewPost = (props) => {
 
@@ -15,15 +15,13 @@ const NewPost = (props) => {
     };
 
     return (
-        <div className={np.wrapper}>
+        <div className={NP.wrapper}>
             <div>
                 <textarea onChange={onPostChange} ref={newPostElement} value={props.newPostText}/>
-                <div>
-                    <button onClick={postMessage}>
-                        Add Post
-                    </button>
-                </div>
             </div>
+            <button onClick={postMessage} className={NP.but}>
+                Add Post
+            </button>
         </div>
     )
 };

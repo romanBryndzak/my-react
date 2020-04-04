@@ -1,6 +1,9 @@
 .wrapper {
     display: grid;
 
-    grid-template-areas: "nM nM" "i M";
-    grid-template-columns: 2fr 10fr;
+    grid-template-areas: "aNM aNM" "i M";
+    grid-template-rows: 80px;
+    grid-template-columns: 2fr 8fr;
+    margin: 10px;
+    grid-gap: 5px;
 }

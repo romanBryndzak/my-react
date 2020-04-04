@@ -5,8 +5,7 @@ body {
 .app-wrapper {
     display: grid;
 
-    grid-template-areas:
-            "h h" "m p";
+    grid-template-areas: "h h" "m p";
     grid-template-rows: 100px;
     grid-template-columns: 2fr 10fr;
     margin: 5px;
@@ -14,6 +13,6 @@ body {
 }
 
 .page {
-     grid-area: p;
+    grid-area: p;
     background-color: aqua;
 }
