@@ -4,7 +4,7 @@ import {NavLink} from "react-router-dom";
 
 const Menu = () => {
     return (
-        <div className={M.navBar}>
+        <div className={M.menu}>
             <div>
                 <div className={M.tool}>
                     <NavLink to={'/portfolio'} activeClassName={M.active}>Portfolio</NavLink>

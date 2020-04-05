@@ -1,8 +1,7 @@
-.navBar {
+.menu {
     grid-area: m;
     background-color: green;
 }
-
 
 .tool {
     margin: 8px;
