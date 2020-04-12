@@ -29,8 +29,7 @@ function App(props) {
                         interlocutors={props.state.messages.interlocutors}
                         messages={props.state.messages.messages}
                         newMessageText={props.state.messages.newMessageText}
-                        addMessage={props.addMessage}
-                        updateNewMessageText={props.updateNewMessageText}
+                        dispatch={props.dispatch}
                     />
                 }/>
                 <Route path={'/news'} render={() =>

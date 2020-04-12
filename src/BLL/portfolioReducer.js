@@ -1,7 +1,16 @@
 const addPost = 'addPost';
 const updateNewText = 'updateNewText';
 
-const portfolioReducer = (state, action) => {
+let initialPortfolioState = {
+    posts: [
+        {id: 0, message: 'Hello!', like: 10},
+        {id: 1, message: 'How are you.', like: 8},
+        {id: 2, message: 'I am fine, thank you. And you?', like: 0}
+    ],
+    newPostText: 'Hello React!'
+};
+
+const portfolioReducer = (state = initialPortfolioState, action) => {
     switch (action.type) {
         case addPost:
             let newPost = {
