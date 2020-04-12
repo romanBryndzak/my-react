@@ -13,8 +13,7 @@ const Portfolio = (props) => {
                 <MyPost
                     posts={props.posts}
                     newPostText={props.newPostText}
-                    addPost={props.addPost}
-                    updateNewText={props.updateNewText}
+                    dispatch={props.dispatch}
                 />
             </div>
         </div>

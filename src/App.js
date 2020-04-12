@@ -21,8 +21,7 @@ function App(props) {
                     <Portfolio
                         posts={props.state.portfolio.posts}
                         newPostText={props.state.portfolio.newPostText}
-                        addPost={props.addPost}
-                        updateNewText={props.updateNewText}
+                        dispatch={props.dispatch}
                     />
                 }/>
                 <Route path={'/messages'} render={() =>
@@ -34,7 +33,9 @@ function App(props) {
                         updateNewMessageText={props.updateNewMessageText}
                     />
                 }/>
-                <Route path={'/news'} render={News}/>
+                <Route path={'/news'} render={() =>
+                    <News/>
+                }/>
                 <Route path={'/music'} render={Music}/>
                 <Route path={'/settings'} render={Settings}/>
                 <Route path={'/myFriends'} render={MyFriends}/>

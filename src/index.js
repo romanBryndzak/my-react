@@ -11,8 +11,7 @@ let renderDomTree = (state) => {
             <BrowserRouter>
                 <App
                     state={state}
-                    addPost={store.addPost.bind(store)}
-                    updateNewText={store.updateNewText.bind(store)}
+                    dispatch={store.dispatch.bind(store)}
                     addMessage={store.addMessage.bind(store)}
                     updateNewMessageText={store.updateNewMessageText.bind(store)}
                 />

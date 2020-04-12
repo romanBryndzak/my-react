@@ -1,8 +1,8 @@
 import React from "react";
 import N from "./News.module.css";
 
-const News = () => {
-    return(
+let News = (props) => {
+    return (
         <div>
             News
         </div>

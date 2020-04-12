@@ -1,3 +1,5 @@
+import portfolioReducer from "./portfolioReducer";
+
 let store = {
     _state: {
         portfolio: {
@@ -29,11 +31,15 @@ let store = {
         }
     },
 
+    _callSubscribe() {
+    },
+
     getState() {
         return this._state;
     },
 
-    _callSubscribe() {
+    subscribe(observer) {
+        this._callSubscribe = observer;
     },
 
     addMessage() {
@@ -42,6 +48,7 @@ let store = {
             message: this._state.messages.newMessageText,
         };
         this._state.messages.messages.push(newMessage);
+        this._state.messages.newMessageText = '';
         this._callSubscribe(this._state);
     },
 
@@ -50,25 +57,11 @@ let store = {
         this._callSubscribe(this._state);
     },
 
-    addPost() {
-        let newPost = {
-            id: 3,
-            message: this._state.portfolio.newPostText,
-            like: 0
-        };
-        this._state.portfolio.posts.push(newPost);
-        this._callSubscribe(this._state);
-    },
+    dispatch(action) {
+        this._state.portfolio = portfolioReducer(this._state.portfolio, action);
 
-    updateNewText(newText) {
-        this._state.portfolio.newPostText = (newText);
         this._callSubscribe(this._state);
-    },
-
-    subscribe(observer) {
-        this._callSubscribe = observer;
     },
 };
-
 window.store = store;
 export default store;
