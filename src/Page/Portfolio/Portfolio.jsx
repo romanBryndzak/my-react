@@ -1,7 +1,7 @@
 import React from "react";
 import P from "./Portfolio.module.css";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
-import MyPost from "./My post/My post";
+import MyPostContainer from "./My post/MyPostsContainer";
 
 const Portfolio = (props) => {
     return (
@@ -10,11 +10,7 @@ const Portfolio = (props) => {
                 <ProfileInfo/>
             </div>
             <div>
-                <MyPost
-                    posts={props.posts}
-                    newPostText={props.newPostText}
-                    dispatch={props.dispatch}
-                />
+                <MyPostContainer store={props.store}/>
             </div>
         </div>
     )

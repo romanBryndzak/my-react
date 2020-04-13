@@ -1,28 +1,23 @@
 import React from "react";
 import NP from "./NewPost.module.css";
-import {addPostAction, updateNewTextAction} from "../../../BLL/portfolioReducer";
-
-
 
 const NewPost = (props) => {
 
-    let newPostElement = React.createRef();
-
-    let postMessage = () => {
-        props.dispatch(addPostAction());
+    let onPostMessage = () => {
+        props.onPostMessage();
     };
 
-    let onPostChange = () => {
-        let text = newPostElement.current.value;
-        props.dispatch(updateNewTextAction(text));
+    let onPostChange = (event) => {
+        let text = event.target.value;
+        props.onPostChange(text);
     };
 
     return (
         <div className={NP.wrapper}>
             <div>
-                <textarea onChange={onPostChange} ref={newPostElement} value={props.newPostText}/>
+                <textarea onChange={onPostChange} value={props.newPostText}/>
             </div>
-            <button onClick={postMessage} className={NP.but}>
+            <button onClick={onPostMessage} className={NP.but}>
                 Add Post
             </button>
         </div>

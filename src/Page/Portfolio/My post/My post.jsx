@@ -4,17 +4,15 @@ import NewPost from "../New post/NewPost";
 import Posts from "../Posts/Posts";
 
 const MyPost = (props) => {
-    const PostElement = props.posts.map(p => <Posts id={p.id} message={p.message} like={p.like} key={p.id}/>);
+    const PostElement = props.posts.map(p =>
+        <Posts id={p.id}
+               message={p.message}
+               like={p.like}
+               key={p.id}
+        />);
+
     return (
         <div>
-            <div>
-
-            </div>
-            <div>
-                <NewPost dispatch={props.dispatch}
-                         newPostText={props.newPostText}
-                />
-            </div>
             <div className={mp.postElement}>
                 {PostElement}
             </div>
