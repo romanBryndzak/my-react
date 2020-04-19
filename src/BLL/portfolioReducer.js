@@ -12,18 +12,23 @@ let initialPortfolioState = {
 
 const portfolioReducer = (state = initialPortfolioState, action) => {
     switch (action.type) {
-        case addPost:
+        case addPost: {
             let newPost = {
                 id: 3,
                 message: state.newPostText,
                 like: 0
             };
-            state.posts.push(newPost);
-            state.newPostText = '';
-            return state;
-        case updateNewText:
-            state.newPostText = (action.newText);
-            return state;
+            let stateCopy = {...state};
+            stateCopy.posts = [...state.posts];
+            stateCopy.posts.push(newPost);
+            stateCopy.newPostText = '';
+            return stateCopy;
+        }
+        case updateNewText: {
+            let stateCopy = {...state};
+            stateCopy.newPostText = (action.newText);
+            return stateCopy;
+        }
         default:
             return state;
     }

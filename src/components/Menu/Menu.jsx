@@ -22,7 +22,7 @@ const Menu = () => {
                     <NavLink to={'/settings'} activeClassName={M.active}>Settings</NavLink>
                 </div>
                 <div className={M.tool}>
-                    <NavLink to={'/myFriends'} activeClassName={M.active}>My friends</NavLink>
+                    <NavLink to={'/users'} activeClassName={M.active}>My friends</NavLink>
                 </div>
             </div>
         </div>

@@ -13,6 +13,10 @@ const MyPost = (props) => {
 
     return (
         <div>
+            <NewPost onPostMessage={props.onPostMessage}
+                     onPostChange={props.onPostChange}
+                     newPostText={props.newPostText}
+            />
             <div className={mp.postElement}>
                 {PostElement}
             </div>

@@ -15,7 +15,8 @@ const Messages = (props) => {
         <div className={M.wrapper}>
             <AddNewMessage
                 newMessageText={props.newMessageText}
-                dispatch={props.dispatch}
+                addMessage={props.addMessage}
+                onMessageChange={props.onMessageChange}
             />
             <div>
                 {InterlocutorElement}
