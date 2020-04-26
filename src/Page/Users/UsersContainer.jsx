@@ -8,7 +8,7 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
     return {
-        follow:(userId) => {
+        yesFollow:(userId) => {
             dispatch(followAC(userId));
         },
         notFollow:(userId) => {
