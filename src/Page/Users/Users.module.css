@@ -1,5 +1,6 @@
 .wrapper {
     display: flex;
+    padding: 5px;
 }
 
 .ava {
@@ -13,4 +14,17 @@
     border-radius: 20px;
     cursor: pointer;
     background-color: white;
+}
+
+.wrapperName {
+    padding-right: 25px;
+    padding-left: 20px;
+}
+
+.name {
+    padding-bottom: 25px;
+}
+
+.city {
+    padding-bottom: 25px;
 }

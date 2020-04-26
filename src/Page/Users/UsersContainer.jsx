@@ -4,7 +4,6 @@ import Users from "./Users";
 import {followAC, notFollowAC, setUsersAC} from "../../BLL/usersReducer";
 
 const mapStateToProps = (state) => {
-    debugger
     return {users: state.users.users}
 };
 const mapDispatchToProps = (dispatch) => {
