@@ -1,43 +1,14 @@
 const onFollow = 'on_follow';
 const onNotFollow = 'on_notFollow';
 const onSetUsers = 'on_SetUsers';
+const setCurrentPage = 'set_Current_Page ';
+const getTotalUsersCount = 'get_Total_Users_Count ';
 
-let initialUsersState = {users:[]
-    // users: [
-    //     {
-    //         id: 0,
-    //         avaUsers: 'https://i.pinimg.com/236x/11/82/ba/1182baa6a3fa464487fca0f7f1979e0a.jpg',
-    //         followed: true,
-    //         fullName: 'Bryndzak Roman',
-    //         status: 'React-Redux, it\'s good.',
-    //         userCity: 'Khmelnytskyi',
-    //         userCountry: 'Ukraine'
-    //     },
-    //     {
-    //         id: 1, avaUsers: 'https://i.pinimg.com/236x/11/82/ba/1182baa6a3fa464487fca0f7f1979e0a.jpg',
-    //         followed: false,
-    //         fullName: 'Боднрук Вася',
-    //         status: 'Life, it\'s good.',
-    //         userCity: 'Gvizdets',
-    //         userCountry: 'Ukraine'
-    //     },
-    //     {
-    //         id: 2, avaUsers: 'https://i.pinimg.com/236x/11/82/ba/1182baa6a3fa464487fca0f7f1979e0a.jpg',
-    //         followed: false,
-    //         fullName: 'Bryndzak Rostyslav',
-    //         status: 'La-la-la-la.',
-    //         userCity: 'Derazhnya',
-    //         userCountry: 'Ukraine'
-    //     },
-    //     {
-    //         id: 3, avaUsers: 'https://i.pinimg.com/236x/11/82/ba/1182baa6a3fa464487fca0f7f1979e0a.jpg',
-    //         followed: true,
-    //         fullName: 'Bryndzak Mike',
-    //         status: 'I study React-Redux.',
-    //         userCity: 'L\'viv',
-    //         userCountry: 'Ukraine'
-    //     },
-    // ]
+let initialUsersState = {
+    users: [],
+    pageSize: 30,
+    totalUsers: 0,
+    currentPage: 1
 };
 
 const usersReducer = (state = initialUsersState, action) => {
@@ -62,16 +33,26 @@ const usersReducer = (state = initialUsersState, action) => {
             };
         case onSetUsers:
             return {
-                ...state,
-                users: [...state.users, ...action.users]
+                ...state, users: action.users
+            };
+        case setCurrentPage:
+            return {
+                ...state, currentPage: action.currentPage
+            };
+        case getTotalUsersCount:
+            debugger
+            return {
+                ...state, totalUsers: action.totalCount
             };
         default:
-                return state;
+            return state;
     }
 };
 
 export const followAC = (userId) => ({type: onFollow, userId});
 export const notFollowAC = (userId) => ({type: onNotFollow, userId});
 export const setUsersAC = (users) => ({type: onSetUsers, users});
+export const setCurrentPageAC = (currentPage) => ({type: setCurrentPage, currentPage});
+export const getTotalUsersCountAC = (totalCount) => ({type: getTotalUsersCount, totalCount});
 
 export default usersReducer;
