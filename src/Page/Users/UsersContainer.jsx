@@ -1,12 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import {
-    yesFollow,
-    getTotalUsersCount,
-    notFollow,
-    setCurrentPage,
-    setUsers,
-    toggleIsFetching
+    yesFollow, getTotalUsersCount, notFollow, setCurrentPage, setUsers, toggleIsFetching
 } from "../../BLL/usersReducer";
 import * as axios from "axios";
 import Users from "./Users";
@@ -61,29 +56,35 @@ const mapStateToProps = (state) => {
         isFetching: state.users.isFetching
     }
 };
-const mapDispatchToProps = (dispatch) => {
-    return {
-        yesFollow: (userId) => {
-            dispatch(yesFollow(userId));
-        },
-        notFollow: (userId) => {
-            dispatch(notFollow(userId));
-        },
-        setUsers: (users) => {
-            dispatch(setUsers(users));
-        },
-        setCurrentPage: (currentPage) => {
-            dispatch(setCurrentPage(currentPage));
-        },
-        getTotalUsersCount: (totalCount) => {
-            dispatch(getTotalUsersCount(totalCount))
-        },
-        toggleIsFetching: (isFetching) => {
-            dispatch(toggleIsFetching(isFetching))
-        }
-    }
-};
 
-const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(UsersContainerAPI);
+const UsersContainer = connect(mapStateToProps,
+    {
+        yesFollow, getTotalUsersCount, notFollow, setCurrentPage,
+        setUsers, toggleIsFetching
+    }
+)(UsersContainerAPI);
 
 export default UsersContainer;
+
+// const mapDispatchToProps = (dispatch) => {
+//     return {
+//         yesFollow: (userId) => {
+//             dispatch(yesFollow(userId));
+//         },
+//         notFollow: (userId) => {
+//             dispatch(notFollow(userId));
+//         },
+//         setUsers: (users) => {
+//             dispatch(setUsers(users));
+//         },
+//         setCurrentPage: (currentPage) => {
+//             dispatch(setCurrentPage(currentPage));
+//         },
+//         getTotalUsersCount: (totalCount) => {
+//             dispatch(getTotalUsersCount(totalCount))
+//         },
+//         toggleIsFetching: (isFetching) => {
+//             dispatch(toggleIsFetching(isFetching))
+//         }
+//     }
+// };
