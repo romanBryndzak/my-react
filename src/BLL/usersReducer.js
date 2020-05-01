@@ -1,19 +1,21 @@
-const onFollow = 'on_follow';
-const onNotFollow = 'on_notFollow';
-const onSetUsers = 'on_SetUsers';
-const setCurrentPage = 'set_Current_Page ';
-const getTotalUsersCount = 'get_Total_Users_Count ';
+const onFollowAC = 'on_follow';
+const onNotFollowAC = 'on_notFollow';
+const onSetUsersAC = 'on_SetUsers';
+const setCurrentPageAC = 'set_Current_Page ';
+const getTotalUsersCountAC = 'get_Total_Users_Count ';
+const toggleIsFetchingAC = 'toggle_Is_Fetching';
 
 let initialUsersState = {
     users: [],
     pageSize: 30,
     totalUsers: 0,
-    currentPage: 1
+    currentPage: 1,
+    isFetching: true
 };
 
 const usersReducer = (state = initialUsersState, action) => {
     switch (action.type) {
-        case onFollow:
+        case onFollowAC:
             return {
                 ...state,
                 users: state.users.map(u => {
@@ -22,7 +24,7 @@ const usersReducer = (state = initialUsersState, action) => {
                     return u
                 })
             };
-        case onNotFollow:
+        case onNotFollowAC:
             return {
                 ...state,
                 users: state.users.map(u => {
@@ -31,28 +33,32 @@ const usersReducer = (state = initialUsersState, action) => {
                     return u
                 })
             };
-        case onSetUsers:
+        case onSetUsersAC:
             return {
                 ...state, users: action.users
             };
-        case setCurrentPage:
+        case setCurrentPageAC:
             return {
                 ...state, currentPage: action.currentPage
             };
-        case getTotalUsersCount:
-            debugger
+        case getTotalUsersCountAC:
             return {
                 ...state, totalUsers: action.totalCount
+            };
+        case toggleIsFetchingAC:
+            return {
+              ...state, isFetching: action.isFetching
             };
         default:
             return state;
     }
 };
 
-export const followAC = (userId) => ({type: onFollow, userId});
-export const notFollowAC = (userId) => ({type: onNotFollow, userId});
-export const setUsersAC = (users) => ({type: onSetUsers, users});
-export const setCurrentPageAC = (currentPage) => ({type: setCurrentPage, currentPage});
-export const getTotalUsersCountAC = (totalCount) => ({type: getTotalUsersCount, totalCount});
+export const yesFollow = (userId) => ({type: onFollowAC, userId});
+export const notFollow = (userId) => ({type: onNotFollowAC, userId});
+export const setUsers = (users) => ({type: onSetUsersAC, users});
+export const setCurrentPage = (currentPage) => ({type: setCurrentPageAC, currentPage});
+export const getTotalUsersCount = (totalCount) => ({type: getTotalUsersCountAC, totalCount});
+export const toggleIsFetching = (isFetching) => ({type: toggleIsFetchingAC, isFetching});
 
 export default usersReducer;
