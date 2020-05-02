@@ -1,14 +1,15 @@
 import {combineReducers, createStore,} from "redux";
-import portfolioReducer from "./portfolioReducer";
+import ProfileReducer from "./ProfleReducer";
 import messagesReducer from "./messagesReducer";
 import usersReducer from "./usersReducer";
 
 let reducers = combineReducers({
-    portfolio: portfolioReducer,
+    profile: ProfileReducer,
     messages: messagesReducer,
     users: usersReducer,
 });
 
 let store = createStore(reducers);
+window.store = store;
 
 export default store;

@@ -1,13 +1,12 @@
 import React from "react";
-import P from "./Portfolio.module.css";
-import ProfileInfo from "./ProfileInfo/ProfileInfo";
+import ProfileInfo from "./Profile/ProfileInfo";
 import MyPostContainer from "./My post/MyPostsContainer";
 
-const Portfolio = () => {
+const Profile = (props) => {
     return (
-        <div className={P.portfolio}>
+        <div>
             <div>
-                <ProfileInfo/>
+                <ProfileInfo profile={props.profile}/>
             </div>
             <div>
                 <MyPostContainer/>
@@ -16,4 +15,4 @@ const Portfolio = () => {
     )
 };
 
-export default Portfolio;
+export default Profile;

@@ -1,12 +1,12 @@
 import React from "react";
 import MyPost from "./My post";
-import {addPostAction, updateNewTextAction} from "../../../BLL/portfolioReducer";
+import {addPostAction, updateNewTextAction} from "../../../BLL/ProfleReducer";
 import {connect} from "react-redux";
 
 const mapStateToProps = (state) => {
     return {
-        posts: state.portfolio.posts,
-        newPostText: state.portfolio.newPostText
+        posts: state.profile.posts,
+        newPostText: state.profile.newPostText
     }
 };
 
@@ -39,8 +39,8 @@ export default MyPostContainer;
 //
 //     return (
 //         <div>
-//             <MyPost posts={state.portfolio.posts}
-//                     newPostText={state.portfolio.newPostText}
+//             <MyPost posts={state.profile.posts}
+//                     newPostText={state.profile.newPostText}
 //                     onPostMessage={postMessage}
 //                     onPostChange={postChange}
 //             />
