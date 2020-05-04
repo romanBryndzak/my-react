@@ -18,7 +18,7 @@ const Users = (props) => {
                           onClick={() => {
                               props.onChangedPageNumber(p)
                           }}
-                    >{p}</span>
+                    >{p+', '}</span>
                 )
             })}
             </div>
