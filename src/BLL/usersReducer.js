@@ -7,6 +7,7 @@ const toggleIsFetchingAC = 'toggle_Is_Fetching';
 
 let initialUsersState = {
     users: [],
+    followed: false,
     pageSize: 30,
     totalUsers: 0,
     currentPage: 1,
@@ -20,7 +21,7 @@ const usersReducer = (state = initialUsersState, action) => {
                 ...state,
                 users: state.users.map(u => {
                     if (u.id === action.userId)
-                        return {...u, followed: false};
+                        return {...u, followed: true};
                     return u
                 })
             };
@@ -29,7 +30,7 @@ const usersReducer = (state = initialUsersState, action) => {
                 ...state,
                 users: state.users.map(u => {
                     if (u.id === action.userId)
-                        return {...u, followed: true};
+                        return {...u, followed: false};
                     return u
                 })
             };
