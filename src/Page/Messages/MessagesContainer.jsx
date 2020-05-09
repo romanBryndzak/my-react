@@ -6,7 +6,7 @@ import {addMessageAction, updateNewMessageTextAction} from "../../BLL/messagesRe
 const mapStateToProps = (state) => {
     return {
         interlocutors: state.messages.interlocutors,
-        messages: state.messages.messages, 
+        messages: state.messages.messages,
         newMessageText: state.messages.newMessageText
     }
 };
@@ -25,6 +25,8 @@ const mapDispatchToProps = (dispatch) => {
 const MessagesContainer = connect(mapStateToProps, mapDispatchToProps)(Messages);
 
 export default MessagesContainer;
+
+
 // <Messages
 //     interlocutors={props.state.messages.interlocutors}
 //     messages={props.state.messages.messages}

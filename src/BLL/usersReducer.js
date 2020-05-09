@@ -48,7 +48,7 @@ const usersReducer = (state = initialUsersState, action) => {
             };
         case toggleIsFetchingAC:
             return {
-              ...state, isFetching: action.isFetching
+                ...state, isFetching: action.isFetching
             };
         default:
             return state;

@@ -2,7 +2,7 @@ import React from "react";
 import aNM from "./AddNewMessage.module.css";
 
 
-let AddNewMessage = (props) => {
+const AddNewMessage = (props) => {
 
     let addMessage = () => {
         props.addMessage();

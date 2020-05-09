@@ -13,7 +13,7 @@ import HeaderContainer from "./components/Header/HeaderContainer";
 
 function App() {
     return (
-        <div className='app-wrapper'>
+        <div className={'app-wrapper'}>
             <HeaderContainer/>
             <Menu/>
             <div className={'page'}>
