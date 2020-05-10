@@ -1,33 +1,19 @@
 import React from "react";
 import {connect} from "react-redux";
 import {
-    yesFollow, getTotalUsersCount, notFollow, setCurrentPage, setUsers, toggleIsFetching, fixedFollowedButtonStatus
+    getUsersThunk, notFollowButtonStatusThunk, followButtonStatusThunk
 } from "../../BLL/usersReducer";
 import Users from "./Users";
 import Preloader from "../../components/common/preloader";
-import {getDataUsers,} from "../../api/api";
 
 
 class UsersContainerAPI extends React.Component {
     componentDidMount() {
-        this.props.toggleIsFetching(true);
-        getDataUsers.getUsers(this.props.currentPage, this.props.pageSize)
-            .then(data => {
-                this.props.toggleIsFetching(false);
-                this.props.setUsers(data.items);
-                this.props.getTotalUsersCount(data.totalCount);
-            });
+        this.props.getUsersThunk(this.props.currentPage, this.props.pageSize)
     }
 
     onChangedPageNumber = (currentPage) => {
-        this.props.toggleIsFetching(true);
-        this.props.setCurrentPage(currentPage);
-        getDataUsers.getUsers(currentPage, this.props.pageSize)
-            .then(data => {
-                this.props.toggleIsFetching(false);
-                this.props.setUsers(data.items);
-                this.props.getTotalUsersCount(data.totalCount);
-            })
+        this.props.getUsersThunk(currentPage, this.props.pageSize)
     };
 
     render() {
@@ -40,9 +26,8 @@ class UsersContainerAPI extends React.Component {
                 totalUsers={this.props.totalUsers}
                 followedStatus={this.props.followedStatus}
                 onChangedPageNumber={this.onChangedPageNumber}
-                yesFollow={this.props.yesFollow}
-                notFollow={this.props.notFollow}
-                fixedFollowedButtonStatus={this.props.fixedFollowedButtonStatus}
+                followButtonStatusThunk={this.props.followButtonStatusThunk}
+                notFollowButtonStatusThunk={this.props.notFollowButtonStatusThunk}
             />
         </>
     }
@@ -61,8 +46,7 @@ const mapStateToProps = (state) => {
 
 const UsersContainer = connect(mapStateToProps,
     {
-        yesFollow, getTotalUsersCount, notFollow, setCurrentPage,
-        setUsers, toggleIsFetching, fixedFollowedButtonStatus
+        getUsersThunk, notFollowButtonStatusThunk, followButtonStatusThunk
     }
 )(UsersContainerAPI);
 

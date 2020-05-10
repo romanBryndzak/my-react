@@ -2,7 +2,6 @@ import React from "react";
 import U from "./Users.module.css";
 import avaUsers from "./../../image/avaUsers.jpg"
 import {NavLink} from "react-router-dom";
-import {followedApi} from "../../api/api";
 
 const Users = (props) => {
     let pageCount = Math.ceil(props.totalUsers / props.pageSize);
@@ -35,24 +34,12 @@ const Users = (props) => {
                                      ?
                                      <button disabled={props.followedStatus.some(id => id === u.id)}
                                              onClick={() => {
-                                                 props.fixedFollowedButtonStatus(true, u.id);
-                                                 followedApi.notFollowedUsers(u.id).then(data => {
-                                                     if (data.resultCode === 0) {
-                                                         props.notFollow(u.id)
-                                                     }
-                                                     props.fixedFollowedButtonStatus(false, u.id);
-                                                 })
+                                                 props.notFollowButtonStatusThunk(u.id)
                                              }} className={U.but}> Not follow </button>
                                      :
                                      <button disabled={props.followedStatus.some(id => id === u.id)}
                                              onClick={() => {
-                                                 props.fixedFollowedButtonStatus(true, u.id);
-                                                 followedApi.yesFollowedUsers(u.id).then(data => {
-                                                         if (data.resultCode === 0) {
-                                                             props.yesFollow(u.id)
-                                                         }
-                                                         props.fixedFollowedButtonStatus(false, u.id);
-                                                     })
+                                                 props.followButtonStatusThunk(u.id)
                                              }} className={U.but}> Yes follow </button>}
                                  </div>
                              </span>

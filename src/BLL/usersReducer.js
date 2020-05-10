@@ -1,3 +1,5 @@
+import {followedApi, getDataUsers} from "../api/api";
+
 const onFollowAC = 'on_follow';
 const onNotFollowAC = 'on_notFollow';
 const onSetUsersAC = 'on_SetUsers';
@@ -16,7 +18,7 @@ let initialUsersState = {
     followedStatus: []
 };
 
-const usersReducer = (state = initialUsersState, action, userId) => {
+const usersReducer = (state = initialUsersState, action) => {
     switch (action.type) {
         case onFollowAC:
             return {
@@ -76,5 +78,44 @@ export const fixedFollowedButtonStatus = (statusFollowed, id) => ({
     statusFollowed,
     userId: id
 });
+
+export const getUsersThunk = (currentPage, pageSize) => {
+    return (dispatch) => {
+        dispatch(toggleIsFetching(true));
+        getDataUsers.getUsers(currentPage, pageSize)
+            .then(data => {
+                dispatch(setCurrentPage(currentPage));
+                dispatch(toggleIsFetching(false));
+                dispatch(setUsers(data.items));
+                dispatch(getTotalUsersCount(data.totalCount));
+            });
+    };
+};
+
+export const notFollowButtonStatusThunk = (userId) => {
+    return (dispatch) => {
+        dispatch(fixedFollowedButtonStatus(true, userId));
+        followedApi.notFollowedUsers(userId).then(data => {
+            if (data.resultCode === 0) {
+                dispatch(notFollow(userId))
+            }
+            dispatch(fixedFollowedButtonStatus(false, userId));
+        })
+
+    }
+};
+
+export const followButtonStatusThunk = (userId) => {
+    return (dispatch) => {
+        dispatch(fixedFollowedButtonStatus(true, userId));
+        followedApi.yesFollowedUsers(userId).then(data => {
+            if (data.resultCode === 0) {
+                dispatch(yesFollow(userId))
+            }
+            dispatch(fixedFollowedButtonStatus(false, userId));
+        })
+
+    }
+};
 
 export default usersReducer;

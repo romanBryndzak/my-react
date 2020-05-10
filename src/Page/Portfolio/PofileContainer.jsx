@@ -1,9 +1,9 @@
 import React from "react";
-import *as axios from "axios";
 import {connect} from "react-redux";
 import {addPostAction, setUserProfile, updateNewTextAction} from "../../BLL/ProfleReducer";
 import {withRouter} from "react-router-dom";
 import Profile from "./Profile";
+import {showUserProfile} from "../../api/api";
 
 class PortfolioContainerAPI extends React.Component {
     componentDidMount() {
@@ -11,10 +11,9 @@ class PortfolioContainerAPI extends React.Component {
         if (!userId) {
             userId = 2
         }
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/` + userId)
-            .then(response => {
-                this.props.setUserProfile(response.data)
-            });
+        showUserProfile.userProfile(userId).then(data => {
+            this.props.setUserProfile(data)
+        });
     }
 
     render() {
