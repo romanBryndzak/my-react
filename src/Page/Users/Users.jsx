@@ -2,8 +2,7 @@ import React from "react";
 import U from "./Users.module.css";
 import avaUsers from "./../../image/avaUsers.jpg"
 import {NavLink} from "react-router-dom";
-import * as axios from "axios";
-import {notFollowedUsers} from "../../api/api";
+import {followedApi} from "../../api/api";
 
 const Users = (props) => {
     let pageCount = Math.ceil(props.totalUsers / props.pageSize);
@@ -32,30 +31,29 @@ const Users = (props) => {
                                         className={U.ava}
                                         alt={'ava'}/>
                                </NavLink>
-                                 <div> {u.followed
+                                 <div className={U.BUT}> {u.followed
                                      ?
-                                     <button onClick={() => {
-                                         notFollowedUsers(u.id).then(data => {
-                                             if (data.resultCode === 0) {
-                                                 props.notFollow(u.id)
-                                             }
-                                         })
-                                     }} className={U.but}> Not follow </button>
+                                     <button disabled={props.followedStatus.some(id => id === u.id)}
+                                             onClick={() => {
+                                                 props.fixedFollowedButtonStatus(true, u.id);
+                                                 followedApi.notFollowedUsers(u.id).then(data => {
+                                                     if (data.resultCode === 0) {
+                                                         props.notFollow(u.id)
+                                                     }
+                                                     props.fixedFollowedButtonStatus(false, u.id);
+                                                 })
+                                             }} className={U.but}> Not follow </button>
                                      :
-                                     <button onClick={() => {
-                                         debugger
-                                         axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {},
-                                             {
-                                                 withCredentials: true,
-                                                 headers: {'API-KEY': '27681bfc-41a2-4aa7-896d-cc278014b22e'}
-                                             })
-                                             .then(response => {
-                                                 debugger
-                                                 if (response.data.resultCode === 0) {
-                                                     props.yesFollow(u.id)
-                                                 }
-                                             })
-                                     }} className={U.but}> Yes follow </button>}
+                                     <button disabled={props.followedStatus.some(id => id === u.id)}
+                                             onClick={() => {
+                                                 props.fixedFollowedButtonStatus(true, u.id);
+                                                 followedApi.yesFollowedUsers(u.id).then(data => {
+                                                         if (data.resultCode === 0) {
+                                                             props.yesFollow(u.id)
+                                                         }
+                                                         props.fixedFollowedButtonStatus(false, u.id);
+                                                     })
+                                             }} className={U.but}> Yes follow </button>}
                                  </div>
                              </span>
                     <span className={U.wrapper}>
@@ -75,13 +73,6 @@ const Users = (props) => {
 };
 
 export default Users;
-
-// import React from "react";
-// import U from "./Users.module.css";
-// import * as axios from "axios";
-// import avaUsers from "./../../image/avaUsers.jpg"
-//
-//
 //
 // const Users = (props) => {
 //     const addSetUsers = () => {

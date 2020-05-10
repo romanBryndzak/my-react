@@ -1,7 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import {
-    yesFollow, getTotalUsersCount, notFollow, setCurrentPage, setUsers, toggleIsFetching
+    yesFollow, getTotalUsersCount, notFollow, setCurrentPage, setUsers, toggleIsFetching, fixedFollowedButtonStatus
 } from "../../BLL/usersReducer";
 import Users from "./Users";
 import Preloader from "../../components/common/preloader";
@@ -38,9 +38,11 @@ class UsersContainerAPI extends React.Component {
                 currentPage={this.props.currentPage}
                 pageSize={this.props.pageSize}
                 totalUsers={this.props.totalUsers}
+                followedStatus={this.props.followedStatus}
                 onChangedPageNumber={this.onChangedPageNumber}
                 yesFollow={this.props.yesFollow}
                 notFollow={this.props.notFollow}
+                fixedFollowedButtonStatus={this.props.fixedFollowedButtonStatus}
             />
         </>
     }
@@ -52,14 +54,15 @@ const mapStateToProps = (state) => {
         pageSize: state.users.pageSize,
         totalUsers: state.users.totalUsers,
         currentPage: state.users.currentPage,
-        isFetching: state.users.isFetching
+        isFetching: state.users.isFetching,
+        followedStatus: state.users.followedStatus
     }
 };
 
 const UsersContainer = connect(mapStateToProps,
     {
         yesFollow, getTotalUsersCount, notFollow, setCurrentPage,
-        setUsers, toggleIsFetching
+        setUsers, toggleIsFetching, fixedFollowedButtonStatus
     }
 )(UsersContainerAPI);
 

@@ -1,14 +1,14 @@
 import React from "react";
 import *as axios from "axios";
 import {connect} from "react-redux";
-import {setUserProfile} from "../../BLL/ProfleReducer";
+import {addPostAction, setUserProfile, updateNewTextAction} from "../../BLL/ProfleReducer";
 import {withRouter} from "react-router-dom";
 import Profile from "./Profile";
 
 class PortfolioContainerAPI extends React.Component {
     componentDidMount() {
         let userId = this.props.match.params.userId;
-        if (!userId){
+        if (!userId) {
             userId = 2
         }
         axios.get(`https://social-network.samuraijs.com/api/1.0/profile/` + userId)
@@ -30,6 +30,10 @@ const mapStateToProps = (state) => ({
 
 let ComponentWithRouterURL = withRouter(PortfolioContainerAPI);
 
-const ProfileContainer = connect(mapStateToProps, {setUserProfile})(ComponentWithRouterURL);
+const ProfileContainer = connect(mapStateToProps, {
+    setUserProfile,
+    addPostAction,
+    updateNewTextAction
+})(ComponentWithRouterURL);
 
 export default ProfileContainer;

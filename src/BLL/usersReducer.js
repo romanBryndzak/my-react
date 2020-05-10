@@ -4,6 +4,7 @@ const onSetUsersAC = 'on_SetUsers';
 const setCurrentPageAC = 'set_Current_Page ';
 const getTotalUsersCountAC = 'get_Total_Users_Count ';
 const toggleIsFetchingAC = 'toggle_Is_Fetching';
+const followedButtonStatusAC = 'followed_Button_Status';
 
 let initialUsersState = {
     users: [],
@@ -11,10 +12,11 @@ let initialUsersState = {
     pageSize: 30,
     totalUsers: 0,
     currentPage: 1,
-    isFetching: true
+    isFetching: true,
+    followedStatus: []
 };
 
-const usersReducer = (state = initialUsersState, action) => {
+const usersReducer = (state = initialUsersState, action, userId) => {
     switch (action.type) {
         case onFollowAC:
             return {
@@ -50,6 +52,14 @@ const usersReducer = (state = initialUsersState, action) => {
             return {
                 ...state, isFetching: action.isFetching
             };
+        case followedButtonStatusAC: {
+            return {
+                ...state,
+                followedStatus: action.statusFollowed
+                    ? [...state.followedStatus, action.userId]
+                    : state.followedStatus.filter(id => id !== action.userId)
+            }
+        }
         default:
             return state;
     }
@@ -61,5 +71,10 @@ export const setUsers = (users) => ({type: onSetUsersAC, users});
 export const setCurrentPage = (currentPage) => ({type: setCurrentPageAC, currentPage});
 export const getTotalUsersCount = (totalCount) => ({type: getTotalUsersCountAC, totalCount});
 export const toggleIsFetching = (isFetching) => ({type: toggleIsFetchingAC, isFetching});
+export const fixedFollowedButtonStatus = (statusFollowed, id) => ({
+    type: followedButtonStatusAC,
+    statusFollowed,
+    userId: id
+});
 
 export default usersReducer;

@@ -17,7 +17,10 @@ class HeaderContainerApi extends React.Component {
     }
 
     render() {
-        return <Header {...this.props} isAuth={this.props.isAuth} login={this.props.login}/>
+        return <Header {...this.props}
+                       isAuth={this.props.isAuth}
+                       login={this.props.login}
+        />
     }
 }
 

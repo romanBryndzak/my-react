@@ -8,7 +8,12 @@
     height: 50px;
     border-radius: 35%;
 }
-.numberPage span {
+
+.BUT {
+    margin-top: 5px;
+}
+
+.numberPage {
     cursor: pointer;
 }
 
