@@ -40,6 +40,7 @@ const ProfileReducer = (state = initialProfileState, action) => {
             return state;
     }
 };
+
 export const addPostAction = () => ({type: addPost});
 export const updateNewTextAction = (text) => ({type: updateNewText, newText: text});
 export const setUserProfile = (profile) => ({type: setUserProfileAC, profile});
@@ -51,4 +52,5 @@ export const showUserProfile = (userId) => {
         });
     }
 };
+
 export default ProfileReducer;
