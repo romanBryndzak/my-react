@@ -5,6 +5,7 @@ import {
 } from "../../BLL/usersReducer";
 import Users from "./Users";
 import Preloader from "../../components/common/preloader";
+import {Redirect} from "react-router-dom";
 
 
 class UsersContainerAPI extends React.Component {
@@ -17,19 +18,20 @@ class UsersContainerAPI extends React.Component {
     };
 
     render() {
-        return <>
-            {this.props.isFetching ? <Preloader/> : null}
-            <Users
-                users={this.props.users}
-                currentPage={this.props.currentPage}
-                pageSize={this.props.pageSize}
-                totalUsers={this.props.totalUsers}
-                followedStatus={this.props.followedStatus}
-                onChangedPageNumber={this.onChangedPageNumber}
-                followButtonStatusThunk={this.props.followButtonStatusThunk}
-                notFollowButtonStatusThunk={this.props.notFollowButtonStatusThunk}
-            />
-        </>
+        if (this.props.isAuth === false) return <Redirect to={'/login'}/>;
+            return <>
+                {this.props.isFetching ? <Preloader/> : null}
+                <Users
+                    users={this.props.users}
+                    currentPage={this.props.currentPage}
+                    pageSize={this.props.pageSize}
+                    totalUsers={this.props.totalUsers}
+                    followedStatus={this.props.followedStatus}
+                    onChangedPageNumber={this.onChangedPageNumber}
+                    followButtonStatusThunk={this.props.followButtonStatusThunk}
+                    notFollowButtonStatusThunk={this.props.notFollowButtonStatusThunk}
+                />
+            </>
     }
 }
 
@@ -40,7 +42,8 @@ const mapStateToProps = (state) => {
         totalUsers: state.users.totalUsers,
         currentPage: state.users.currentPage,
         isFetching: state.users.isFetching,
-        followedStatus: state.users.followedStatus
+        followedStatus: state.users.followedStatus,
+        isAuth: state.authentic.isAuth
     }
 };
 

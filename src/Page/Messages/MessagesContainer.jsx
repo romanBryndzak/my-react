@@ -4,10 +4,12 @@ import Messages from "./Messages";
 import {addMessageAction, updateNewMessageTextAction} from "../../BLL/messagesReducer";
 
 const mapStateToProps = (state) => {
+    debugger
     return {
         interlocutors: state.messages.interlocutors,
         messages: state.messages.messages,
-        newMessageText: state.messages.newMessageText
+        newMessageText: state.messages.newMessageText,
+        isAuth:state.authentic.isAuth
     }
 };
 
