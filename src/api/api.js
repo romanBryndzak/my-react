@@ -6,7 +6,11 @@ const instance = axios.create({
     headers: {'API-KEY': '24155da4-d8a4-4890-a25f-03b57c3d3ba2'},
 });
 
-export const showUserProfile = {
+export const identificationMeAPI = () => {
+  return instance.get(`auth/me`).then(response => response)
+};
+
+export const showUserProfileAPI = {
     userProfile(userId) {
         return instance.get(`profile/` + userId)
             .then(response => response.data)

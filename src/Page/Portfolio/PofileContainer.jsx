@@ -1,9 +1,8 @@
 import React from "react";
 import {connect} from "react-redux";
-import {addPostAction, setUserProfile, updateNewTextAction} from "../../BLL/ProfleReducer";
+import {addPostAction, setUserProfile, showUserProfile, updateNewTextAction} from "../../BLL/ProfleReducer";
 import {withRouter} from "react-router-dom";
 import Profile from "./Profile";
-import {showUserProfile} from "../../api/api";
 
 class PortfolioContainerAPI extends React.Component {
     componentDidMount() {
@@ -11,9 +10,7 @@ class PortfolioContainerAPI extends React.Component {
         if (!userId) {
             userId = 2
         }
-        showUserProfile.userProfile(userId).then(data => {
-            this.props.setUserProfile(data)
-        });
+        this.props.showUserProfile(userId);
     }
 
     render() {
@@ -32,7 +29,8 @@ let ComponentWithRouterURL = withRouter(PortfolioContainerAPI);
 const ProfileContainer = connect(mapStateToProps, {
     setUserProfile,
     addPostAction,
-    updateNewTextAction
+    updateNewTextAction,
+    showUserProfile
 })(ComponentWithRouterURL);
 
 export default ProfileContainer;

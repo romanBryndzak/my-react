@@ -1,3 +1,5 @@
+import {identificationMeAPI} from "../api/api";
+
 const setUserDataAC = 'setUserDataAC';
 
 let initialAuthenticState = {
@@ -19,5 +21,16 @@ const AuthenticReducer = (state = initialAuthenticState, action) => {
 };
 
 export const setUserData = (userId, email, login) => ({type: setUserDataAC, data: {userId, email, login}});
+
+export const identificationMeThunk = () => {
+    return (dispatch) => {
+        identificationMeAPI().then(response => {
+            if (response.data.resultCode === 0) {
+                let {userId, email, login} = response.data.data;
+                dispatch(setUserData(userId, email, login))
+            }
+        });
+    }
+};
 
 export default AuthenticReducer;

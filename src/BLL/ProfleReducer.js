@@ -1,3 +1,5 @@
+import {showUserProfileAPI} from "../api/api";
+
 const addPost = 'addPost';
 const updateNewText = 'updateNewText';
 const setUserProfileAC = 'set_User_Profile';
@@ -42,4 +44,11 @@ export const addPostAction = () => ({type: addPost});
 export const updateNewTextAction = (text) => ({type: updateNewText, newText: text});
 export const setUserProfile = (profile) => ({type: setUserProfileAC, profile});
 
+export const showUserProfile = (userId) => {
+    return (dispatch) => {
+        showUserProfileAPI.userProfile(userId).then(data => {
+            dispatch(setUserProfile(data));
+        });
+    }
+};
 export default ProfileReducer;
