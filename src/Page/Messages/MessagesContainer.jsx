@@ -2,6 +2,7 @@ import React from "react";
 import {connect} from "react-redux";
 import Messages from "./Messages";
 import {addMessageAction, updateNewMessageTextAction} from "../../BLL/messagesReducer";
+import {withAuthRedirect} from "../../hok/withAuthRedirect";
 
 const mapStateToProps = (state) => {
     debugger
@@ -9,7 +10,6 @@ const mapStateToProps = (state) => {
         interlocutors: state.messages.interlocutors,
         messages: state.messages.messages,
         newMessageText: state.messages.newMessageText,
-        isAuth:state.authentic.isAuth
     }
 };
 
@@ -24,7 +24,9 @@ const mapDispatchToProps = (dispatch) => {
     }
 };
 
-const MessagesContainer = connect(mapStateToProps, mapDispatchToProps)(Messages);
+let AuthRedirectComponent = withAuthRedirect(Messages);
+
+const MessagesContainer = connect(mapStateToProps, mapDispatchToProps)(AuthRedirectComponent);
 
 export default MessagesContainer;
 
