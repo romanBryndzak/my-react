@@ -6,6 +6,8 @@ import {
 import Users from "./Users";
 import Preloader from "../../components/common/preloader";
 import {Redirect} from "react-router-dom";
+import {compose} from "redux";
+import {withAuthRedirect} from "../../hok/withAuthRedirect";
 
 
 class UsersContainerAPI extends React.Component {
@@ -47,13 +49,20 @@ const mapStateToProps = (state) => {
     }
 };
 
-const UsersContainer = connect(mapStateToProps,
-    {
-        getUsersThunk, notFollowButtonStatusThunk, followButtonStatusThunk
-    }
-)(UsersContainerAPI);
+export default compose(
+    connect(mapStateToProps,
+        { getUsersThunk, notFollowButtonStatusThunk, followButtonStatusThunk}
+    ), withAuthRedirect
+) (UsersContainerAPI);
 
-export default UsersContainer;
+
+// const UsersContainer = connect(mapStateToProps,
+//     {
+//         getUsersThunk, notFollowButtonStatusThunk, followButtonStatusThunk
+//     }
+// )(UsersContainerAPI);
+//
+// export default UsersContainer;
 
 // const mapDispatchToProps = (dispatch) => {
 //     return {

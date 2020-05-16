@@ -7,7 +7,7 @@ const Menu = () => {
         <div className={M.menu}>
             <div>
                 <div className={M.tool}>
-                    <NavLink to={'/portfolio'} activeClassName={M.active}>Portfolio</NavLink>
+                    <NavLink to={'/profile'} activeClassName={M.active}>Profile</NavLink>
                 </div>
                 <div className={M.tool}>
                     <NavLink to={'/messages'} activeClassName={M.active}>Messages</NavLink>

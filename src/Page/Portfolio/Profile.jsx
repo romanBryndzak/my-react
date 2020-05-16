@@ -1,5 +1,5 @@
 import React from "react";
-import ProfileInfo from "./Profile/ProfileInfo";
+import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import MyPostContainer from "./My post/MyPostsContainer";
 
 const Profile = (props) => {
