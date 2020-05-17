@@ -1,6 +1,8 @@
 import React from "react";
 import PI from "./ProfileInfo.module.css";
 import Preloader from "../../../components/common/preloader";
+import ProfileStatus from "../ProfileStatus/ProfileStatus";
+import city from "../../../image/city.jpg"
 
 const ProfileInfo = (props) => {
     if (props.profile === null || props.profile === undefined) {
@@ -10,15 +12,16 @@ const ProfileInfo = (props) => {
     return (
         <div>
             <div>
-                <img className={PI.img1}
-                     src='https://ecooboi.com.ua/files/cache/c3/b2/ae/xecooboi-nochnoj-new-york-panoramnoe-foto-10048.jpg.pagespeed.ic.iK6wmO5szo.webp'
-                     alt={'img'}/>
+                <img className={PI.img1} src={city} alt={'img'}/>
             </div>
             <div>
                 <img className={PI.img2}
                      src={props.profile.photos.large} alt={'img'}/>
                 {/*<img className={PI.img2}*/}
                 {/*src='https://img4.automoto.ua/overview/Ford-Mustang-2020-3fd-huge-1564.jpg' alt={'img'}/>*/}
+            </div>
+            <div>
+                <ProfileStatus status={"Hello friend"}/>
             </div>
             <div className={PI.info}>
                 <div>"aboutMe":{props.profile.aboutMe}</div>
