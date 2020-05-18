@@ -21,7 +21,7 @@ const ProfileInfo = (props) => {
                 {/*src='https://img4.automoto.ua/overview/Ford-Mustang-2020-3fd-huge-1564.jpg' alt={'img'}/>*/}
             </div>
             <div>
-                <ProfileStatus status={"Hello friend"}/>
+                <ProfileStatus status={props.status} updateStatusThunk={props.updateStatusThunk}/>
             </div>
             <div className={PI.info}>
                 <div>"aboutMe":{props.profile.aboutMe}</div>
