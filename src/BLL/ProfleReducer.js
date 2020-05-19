@@ -39,7 +39,6 @@ const ProfileReducer = (state = initialProfileState, action) => {
             return {...state, profile: action.profile}
         }
         case setStatusAC: {
-            debugger
             return {...state, status: action.status}
         }
         default:
@@ -63,7 +62,6 @@ export const showUserProfile = (userId) => {
 export const getStatusThunk = (userId) => {
     return (dispatch) => {
         ProfileAPI.getStatus(userId).then(data => {
-            debugger
             dispatch(setStatus(data))
         })
     }
