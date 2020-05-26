@@ -7,6 +7,7 @@ import {
 import {withRouter} from "react-router-dom";
 import Profile from "./Profile";
 import {compose} from "redux";
+import {withAuthRedirect} from "../../hok/withAuthRedirect";
 
 class ProfileContainerAPI extends React.Component {
     componentDidMount() {

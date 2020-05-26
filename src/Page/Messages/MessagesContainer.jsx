@@ -1,7 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import Messages from "./Messages";
-import {addMessageAction, updateNewMessageTextAction} from "../../BLL/messagesReducer";
+import {AddNewMessageAction} from "../../BLL/messagesReducer";
 import {withAuthRedirect} from "../../hok/withAuthRedirect";
 import {compose} from "redux";
 
@@ -15,18 +15,15 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        addMessage: () => {
-            dispatch(addMessageAction());
-        },
-        onMessageChange: (text) => {
-            dispatch(updateNewMessageTextAction(text));
+        AddNewMessage: (text) => {
+            dispatch(AddNewMessageAction(text));
         }
     }
 };
 
 export default compose(
     connect(mapStateToProps, mapDispatchToProps),
-            withAuthRedirect
+            // withAuthRedirect
 ) (Messages);
 
 

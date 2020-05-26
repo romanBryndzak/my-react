@@ -19,8 +19,10 @@ let initialProfileState = {
 const ProfileReducer = (state = initialProfileState, action) => {
     switch (action.type) {
         case addPost: {
+            let postsLength = state.posts.length;
+            for (let i = state.posts.length; i > state.posts.length; i++){}
             let newPost = {
-                id: 3,
+                id: postsLength,
                 message: state.newPostText,
                 like: 0
             };
@@ -31,9 +33,10 @@ const ProfileReducer = (state = initialProfileState, action) => {
             return stateCopy;
         }
         case updateNewText: {
-            let stateCopy = {...state};
-            stateCopy.newPostText = (action.newText);
-            return stateCopy;
+            return {
+                ...state,
+                newPostText: action.newText
+            }
         }
         case setUserProfileAC: {
             return {...state, profile: action.profile}
@@ -49,7 +52,7 @@ const ProfileReducer = (state = initialProfileState, action) => {
 export const addPostAction = () => ({type: addPost});
 export const updateNewTextAction = (text) => ({type: updateNewText, newText: text});
 export const setUserProfile = (profile) => ({type: setUserProfileAC, profile});
-export const setStatus = (data) => ({type: setStatusAC, status: data });
+export const setStatus = (data) => ({type: setStatusAC, status: data});
 
 export const showUserProfile = (userId) => {
     return (dispatch) => {

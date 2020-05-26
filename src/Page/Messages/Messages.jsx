@@ -2,7 +2,7 @@ import React from "react";
 import M from "./Messages.module.css";
 import Message from "./Message/Message";
 import Interlocutor from "./Interlocutor/Interlocutor";
-import AddNewMessage from "./AddNewMessage/AddNewMessage";
+import NewMessage from "./NewMessage/NewMessage";
 
 const Messages = (props) => {
 
@@ -12,10 +12,8 @@ const Messages = (props) => {
         <Message id={m.id} message={m.message} key={m.id}/>);
     return (
         <div className={M.wrapper}>
-            <AddNewMessage
-                newMessageText={props.newMessageText}
-                addMessage={props.addMessage}
-                onMessageChange={props.onMessageChange}
+            <NewMessage
+                AddNewMessage={props.AddNewMessage}
             />
             <div>
                 {InterlocutorElement}

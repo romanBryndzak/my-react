@@ -1,4 +1,4 @@
-import {identificationMeAPI} from "../api/api";
+import {authenticMeAPI, identificationMeAPI} from "../api/api";
 
 const setUserDataAC = 'setUserDataAC';
 
@@ -24,12 +24,22 @@ export const setUserData = (userId, email, login) => ({type: setUserDataAC, data
 
 export const identificationMeThunk = () => {
     return (dispatch) => {
-        identificationMeAPI().then(response => {
+        authenticMeAPI.me().then(response => {
             if (response.data.resultCode === 0) {
                 let {userId, email, login} = response.data.data;
                 dispatch(setUserData(userId, email, login))
             }
         });
+    }
+};
+
+export const loginThunk = () => {
+    return (dispatch) => {
+        authenticMeAPI.login().then(response => {
+            if (response.data.resultCode === 0) {
+
+            }
+                })
     }
 };
 

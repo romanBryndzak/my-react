@@ -1,5 +1,4 @@
-const addMessage = 'addMessage';
-const updateNewMessageText = ' updateNewMessageText';
+const AddNewMessage = ' AddNewMessage';
 
 let initialMessagesState = {
     interlocutors: [
@@ -16,34 +15,39 @@ let initialMessagesState = {
         {id: 2, message: 'I study React.'},
         {id: 3, message: 'How old are you?'},
         {id: 4, message: 'I don`t  answer personal questions!'}
-    ],
-    newMessageText: 'Hello. My name Illia, I am from Ukraine.'
+    ]
 };
 
 const messagesReducer = (state = initialMessagesState, action) => {
     switch (action.type) {
-        case addMessage: {
-            let newMessage = {
-                id: 5,
-                message: state.newMessageText,
+        case AddNewMessage: {
+            let MessageText = action.newMessageText;
+            let messageLength = state.messages.length;
+            console.log(messageLength);
+                for (let i = state.messages.length; state.messages.length < i; i++ ){}
+
+            return {
+                ...state,
+                messages:[...state.messages, {id: messageLength, message: MessageText}]
             };
-            let stateCopy = {...state};
-            stateCopy.messages = [...state.messages];
-            stateCopy.messages.push(newMessage);
-            stateCopy.newMessageText = '';
-            return stateCopy;
-        }
-        case  updateNewMessageText: {
-            let stateCopy = {...state};
-            stateCopy.newMessageText = action.newText;
-            return stateCopy;
         }
         default:
             return state;
     }
 };
 
-export const addMessageAction = () => ({type: addMessage});
-export const updateNewMessageTextAction = (text) => ({type: updateNewMessageText, newText: text});
+export const AddNewMessageAction = (text) => ({type: AddNewMessage, newMessageText: text});
 
 export default messagesReducer;
+
+
+// case AddNewMessage: {
+//     let newMessage = {
+//         id: 5,
+//         message: action.newMessageText,
+//     };
+//     let stateCopy = {...state};
+//     stateCopy.messages = [...state.messages];
+//     stateCopy.messages.push(newMessage);
+//     return stateCopy;
+// }
