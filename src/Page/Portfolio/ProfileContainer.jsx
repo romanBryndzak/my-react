@@ -7,7 +7,6 @@ import {
 import {withRouter} from "react-router-dom";
 import Profile from "./Profile";
 import {compose} from "redux";
-import {withAuthRedirect} from "../../hok/withAuthRedirect";
 
 class ProfileContainerAPI extends React.Component {
     componentDidMount() {
@@ -32,12 +31,13 @@ const mapStateToProps = (state) => ({
     status: state.profile.status
 });
 
-export default compose (connect(mapStateToProps,
-    { setUserProfile, addPostAction, updateNewTextAction, showUserProfile,
-        getStatusThunk, updateStatusThunk}),
+export default compose(connect(mapStateToProps,
+    {
+        setUserProfile, addPostAction, updateNewTextAction, showUserProfile,
+        getStatusThunk, updateStatusThunk
+    }),
     withRouter
-) (ProfileContainerAPI);
-
+)(ProfileContainerAPI);
 
 
 // let ComponentWithRouterURL = withRouter(ProfileContainerAPI);

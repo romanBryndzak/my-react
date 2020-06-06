@@ -1,6 +1,8 @@
 import React from "react";
 import Field from "redux-form/lib/Field";
 import reduxForm from "redux-form/lib/reduxForm";
+import {Input} from "../components/axiliary/componentsForForm";
+import {required} from "../components/axiliary/validationOnError/filadValidation";
 
 export const Login = () => {
     return (
@@ -15,10 +17,11 @@ const LoginForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
             <div>
-                <Field component={'input'} name={'login'} placeholder={'Login'}/>
+                <Field component={Input} name={'login'} placeholder={'Login'} validate={[required]}/>
             </div>
             <div>
-                <Field component={'input'} name={'password'} placeholder={'Password'}/>
+                <Field component={Input} name={'password'} placeholder={'Password'}
+                       type={'password'} validate={[required]}/>
             </div>
             <div>
                 <Field component={'input'} name={'remember me'} type={"checkbox"}/> Remember me
@@ -30,6 +33,7 @@ const LoginForm = (props) => {
     )
 };
 
-const onSubmit = (fromData) => {};
+const onSubmit = () => {
+};
 
 const LoginReduxForm = reduxForm({form: "login"})(LoginForm);

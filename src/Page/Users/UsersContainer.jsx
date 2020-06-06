@@ -4,10 +4,10 @@ import {
     getUsersThunk, notFollowButtonStatusThunk, followButtonStatusThunk
 } from "../../BLL/usersReducer";
 import Users from "./Users";
-import Preloader from "../../components/common/preloader";
 import {Redirect} from "react-router-dom";
 import {compose} from "redux";
 import {withAuthRedirect} from "../../hok/withAuthRedirect";
+import Preloader from "../../components/axiliary/preloader";
 
 
 class UsersContainerAPI extends React.Component {
@@ -56,14 +56,6 @@ export default compose(
 ) (UsersContainerAPI);
 
 
-// const UsersContainer = connect(mapStateToProps,
-//     {
-//         getUsersThunk, notFollowButtonStatusThunk, followButtonStatusThunk
-//     }
-// )(UsersContainerAPI);
-//
-// export default UsersContainer;
-
 // const mapDispatchToProps = (dispatch) => {
 //     return {
 //         yesFollow: (userId) => {
@@ -71,18 +63,6 @@ export default compose(
 //         },
 //         notFollow: (userId) => {
 //             dispatch(notFollow(userId));
-//         },
-//         setUsers: (users) => {
-//             dispatch(setUsers(users));
-//         },
-//         setCurrentPage: (currentPage) => {
-//             dispatch(setCurrentPage(currentPage));
-//         },
-//         getTotalUsersCount: (totalCount) => {
-//             dispatch(getTotalUsersCount(totalCount))
-//         },
-//         toggleIsFetching: (isFetching) => {
-//             dispatch(toggleIsFetching(isFetching))
 //         }
 //     }
 // };

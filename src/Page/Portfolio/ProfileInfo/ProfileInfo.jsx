@@ -1,8 +1,8 @@
 import React from "react";
 import PI from "./ProfileInfo.module.css";
-import Preloader from "../../../components/common/preloader";
 import ProfileStatus from "../ProfileStatus/ProfileStatus";
 import city from "../../../image/city.jpg"
+import Preloader from "../../../components/axiliary/preloader";
 
 const ProfileInfo = (props) => {
     if (props.profile === null || props.profile === undefined) {

@@ -18,24 +18,32 @@ let initialProfileState = {
 
 const ProfileReducer = (state = initialProfileState, action) => {
     switch (action.type) {
-        case addPost: {
-            let postsLength = state.posts.length;
-            for (let i = state.posts.length; i > state.posts.length; i++){}
-            let newPost = {
-                id: postsLength,
-                message: state.newPostText,
-                like: 0
-            };
-            let stateCopy = {...state};
-            stateCopy.posts = [...state.posts];
-            stateCopy.posts.push(newPost);
-            stateCopy.newPostText = '';
-            return stateCopy;
-        }
+        // case addPost: {
+        //     let postsLength = state.posts.length;
+        //     for (let i = state.posts.length; i > state.posts.length; i++) {
+        //     }
+        //     let newPost = {
+        //         id: postsLength,
+        //         message: state.newPostText,
+        //         like: 0
+        //     };
+        //     let stateCopy = {...state};
+        //     stateCopy.posts = [...state.posts];
+        //     stateCopy.posts.push(newPost);
+        //     stateCopy.newPostText = '';
+        //     return stateCopy;
+        // }
         case updateNewText: {
+            let postsLength = state.posts.length;
+            for (let i = state.posts.length; i > state.posts.length; i++) {
+            }
             return {
                 ...state,
-                newPostText: action.newText
+                posts: [...state.posts, {
+                    id: postsLength,
+                    message: action.newText,
+                    like: 0
+                }]
             }
         }
         case setUserProfileAC: {

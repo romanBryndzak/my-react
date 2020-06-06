@@ -17,10 +17,11 @@ const NewMessage = (props) => {
 };
 
 const AddNewMessageForm = (props) => {
-
     return (
         <form onSubmit={props.handleSubmit}>
-            <Field component={'textarea'} name={'newMessageText'} placeholder={'Please enter your message'} className={NM.text}/>
+            <Field component={'textarea'} name={'newMessageText'}
+                   placeholder={'Please enter your message'} className={NM.text}
+            />
             <button className={NM.but}>Add message</button>
         </form>
     )

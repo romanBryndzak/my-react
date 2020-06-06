@@ -1,0 +1,8 @@
+.wrapperComponent .errorTextarea,
+.wrapperComponent .errorInput {
+    border: solid red 2px;
+}
+
+.wrapperComponent .errorSpan {
+    color: red;
+}
