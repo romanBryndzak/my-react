@@ -1,36 +1,30 @@
 import React from "react";
-import a from "./auxiliary.module.css";
+import auxiliary from "./auxiliary.module.css";
 
 export const Textarea = ({input, meta, ...props}) => {
 
     let hasError = meta.touched && meta.error;
 
     return (
-        <div className={a.wrapperComponent}>
+        <div>
             <div>
-                <textarea {...input} {...props} className={hasError && a.errorTextarea}/>
+                <textarea {...input} {...props} className={hasError && auxiliary.errorTextarea}/>
             </div>
-            {hasError && <span className={a.errorSpan}>{meta.error}</span>}
+            {hasError && <span className={auxiliary.errorSpan}>{meta.error}</span>}
         </div>
     )
 };
 
 export const Input = ({input, meta, ...props}) => {
 
-    let hasError = meta.error;
-    if (meta.touched === true && input.value === "") {
-        hasError = false
-    } else if(meta.error === undefined) {
-        hasError = true
-
-    }
+    let hasError = meta.touched && meta.error;
 
     return (
-        <div className={a.wrapperComponent}>
+        <div>
             <div>
-                <input {...input} {...props} className={!hasError && a.errorInput}/>
+                <input {...input} {...props} className={hasError && auxiliary.errorInput}/>
             </div>
-            {!hasError && <span className={a.errorSpan}>{meta.error}</span>}
+            {hasError && <span className={auxiliary.errorSpan}>{meta.error}</span>}
         </div>
     )
 };

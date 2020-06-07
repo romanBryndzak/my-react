@@ -1,9 +1,10 @@
-import {authenticMeAPI, identificationMeAPI} from "../api/api";
+import {authenticAPI} from "../api/api";
+import {stopSubmit} from "redux-form";
 
 const setUserDataAC = 'setUserDataAC';
 
 let initialAuthenticState = {
-    userId: null,
+    id: null,
     email: null,
     login: null,
     isAuth: false
@@ -13,33 +14,48 @@ const AuthenticReducer = (state = initialAuthenticState, action) => {
     switch (action.type) {
         case setUserDataAC:
             return {
-                ...state, ...action.data, isAuth: true
+                ...state, ...action.newData
             };
         default:
             return state;
     }
 };
 
-export const setUserData = (userId, email, login) => ({type: setUserDataAC, data: {userId, email, login}});
+export const setUserData = (userId, email, login, isAuth) => ({type: setUserDataAC,
+    newData: {id: userId, email, login, isAuth}});
 
 export const identificationMeThunk = () => {
     return (dispatch) => {
-        authenticMeAPI.me().then(response => {
+        authenticAPI.me().then(response => {
             if (response.data.resultCode === 0) {
-                let {userId, email, login} = response.data.data;
-                dispatch(setUserData(userId, email, login))
+                let {id, email, login} = response.data.data;
+                dispatch(setUserData(id, email, login, true))
             }
         });
     }
 };
 
-export const loginThunk = () => {
+export const loginThunk = (email, password, rememberMe) => {
     return (dispatch) => {
-        authenticMeAPI.login().then(response => {
-            if (response.data.resultCode === 0) {
+        authenticAPI.login(email, password, rememberMe)
+            .then(response => {
+                if (response.data.resultCode === 0) {
+                    dispatch(identificationMeThunk())
+                } else {
+                    let message = (response.data.messages.length > 0 ? response.data.messages[0] : "Some error!");
+                    dispatch(stopSubmit('login', {_error: message}))
+                }
+            })
+    }
+};
 
+export const logoutThunk = () => {
+    return (dispatch) => {
+        authenticAPI.logout().then(response => {
+            if (response.data.resultCode === 0) {
+                dispatch(setUserData(null,null,null,false))
             }
-                })
+        })
     }
 };
 

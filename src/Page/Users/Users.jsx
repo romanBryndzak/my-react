@@ -119,7 +119,7 @@ export default Users;
 //         {
 //             id: 1, avaUsers: 'https://i.pinimg.com/236x/11/82/ba/1182baa6a3fa464487fca0f7f1979e0a.jpg',
 //             followed: false,
-//             fullName: 'Боднрук Вася',
+//             fullName: 'Боднaрук Вася',
 //             status: 'Life, it\'s good.',
 //             userCity: 'Gvizdets',
 //             userCountry: 'Ukraine'
