@@ -2,7 +2,7 @@ import React from "react";
 import PI from "./ProfileInfo.module.css";
 import city from "../../../image/city.jpg"
 import Preloader from "../../../components/axiliary/preloader";
-import ProfileStatus from "../ProfileStatus/ProileStatus";
+import ProfileStatus from "../ProfileStatus/ProfileStatus";
 
 const ProfileInfo = (props) => {
     if (props.profile === null || props.profile === undefined) {
