@@ -11,7 +11,7 @@ import Preloader from "../../components/axiliary/preloader";
 import {
     getCurrentPage, getFollowedStatus, getIsAuth,
     getIsFetching, getPageSize, getTotalUsers, getUsers
-} from "../../BLL/usersSelector";
+} from "../../BLL/Selector/Selector";
 
 
 class UsersContainerAPI extends React.Component {

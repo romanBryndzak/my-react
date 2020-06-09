@@ -3,7 +3,7 @@ import {ProfileAPI} from "../api/api";
 const addPost = 'addPost';
 const updateNewText = 'updateNewText';
 const setUserProfileAC = 'set_User_Profile';
-const setStatusAC = 'getStatus';
+const setStatusAC = 'setStatus';
 
 let initialProfileState = {
     posts: [
@@ -72,7 +72,7 @@ export const showUserProfile = (userId) => {
 
 export const getStatusThunk = (userId) => {
     return (dispatch) => {
-        ProfileAPI.getStatus(userId).then(data => {
+        ProfileAPI.getStatusUser(userId).then(data => {
             dispatch(setStatus(data))
         })
     }

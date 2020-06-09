@@ -19,3 +19,12 @@ export const getFollowedStatus = (state) => {
 export const getIsAuth = (state) => {
     return state.authentic.isAuth
 };
+export  const getProfile = (state) => {
+    return state.profile.profile
+};
+export const getStatus = (state) => {
+    return state.profile.status
+};
+export const getId = (state) => {
+    return state.authentic.id
+};

@@ -7,6 +7,8 @@ import {
 import {withRouter} from "react-router-dom";
 import Profile from "./Profile";
 import {compose} from "redux";
+import {getProfile, getStatus} from "../../BLL/Selector/Selector";
+
 
 class ProfileContainerAPI extends React.Component {
     componentDidMount() {
@@ -27,8 +29,8 @@ class ProfileContainerAPI extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-    profile: state.profile.profile,
-    status: state.profile.status
+    profile: getProfile(state),
+    status: getStatus(state)
 });
 
 export default compose(connect(mapStateToProps,

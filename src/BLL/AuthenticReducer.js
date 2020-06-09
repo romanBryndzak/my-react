@@ -7,7 +7,8 @@ let initialAuthenticState = {
     id: null,
     email: null,
     login: null,
-    isAuth: false
+    isAuth: false,
+
 };
 
 const AuthenticReducer = (state = initialAuthenticState, action) => {
