@@ -1,12 +1,9 @@
 import React from "react";
 import Header from "./Header";
 import {connect} from "react-redux";
-import {identificationMeThunk, logoutThunk,} from "../../BLL/AuthenticReducer";
+import {logoutThunk,} from "../../BLL/AuthenticReducer";
 
 class HeaderContainerApi extends React.Component {
-    componentDidMount() {
-        this.props.identificationMeThunk();
-    }
 
     render() {
         return <Header {...this.props}
@@ -21,6 +18,6 @@ let mapStateToProps = (state) => ({
     login: state.authentic.login
 });
 
-const HeaderContainer = connect(mapStateToProps, {identificationMeThunk, logoutThunk})(HeaderContainerApi);
+const HeaderContainer = connect(mapStateToProps, {logoutThunk})(HeaderContainerApi);
 
 export default HeaderContainer;
