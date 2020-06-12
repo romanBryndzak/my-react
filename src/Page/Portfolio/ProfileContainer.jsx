@@ -4,7 +4,7 @@ import {
     addPostAction, setUserProfile, showUserProfile, updateNewTextAction,
     getStatusThunk, updateStatusThunk
 } from "../../BLL/ProfleReducer";
-import {Redirect, withRouter} from "react-router-dom";
+import {withRouter} from "react-router-dom";
 import Profile from "./Profile";
 import {compose} from "redux";
 import {getId, getIsAuth, getProfile, getStatus} from "../../BLL/Selector/Selector";
