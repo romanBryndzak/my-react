@@ -12,15 +12,18 @@ import HeaderContainer from "./components/Header/HeaderContainer";
 import Login from "./Page/Login";
 import {compose} from "redux";
 import {connect} from "react-redux";
-import {identificationMeThunk} from "./BLL/AuthenticReducer";
+import {initializeThunk} from "./BLL/appReducer";
+import Preloader from "./components/axiliary/preloader";
+
 
 
 class App extends React.Component {
     componentDidMount() {
-        this.props.identificationMeThunk();
+        this.props.initializeThunk();
     }
 
     render() {
+         if(!this.props.initialized) return <Preloader/>;
         return (
             <div className={'app-wrapper'}>
                 <HeaderContainer/>
@@ -39,7 +42,13 @@ class App extends React.Component {
     }
 }
 
+let mapStateToProps = (state) => {
+    return {
+        initialized: state.app.initialized
+    }
+};
+
 export default compose(
     withRouter,
-    connect(null,{identificationMeThunk})
+    connect(mapStateToProps, {initializeThunk})
 )(App);

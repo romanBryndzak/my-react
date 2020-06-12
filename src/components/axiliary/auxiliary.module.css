@@ -1,4 +1,7 @@
-.errorTextarea,
+.errorTextarea {
+    border: solid black 1px;
+}
+
 .errorInput {
     border: solid red 2px;
 }

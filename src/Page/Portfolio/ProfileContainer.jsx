@@ -4,20 +4,34 @@ import {
     addPostAction, setUserProfile, showUserProfile, updateNewTextAction,
     getStatusThunk, updateStatusThunk
 } from "../../BLL/ProfleReducer";
-import {withRouter} from "react-router-dom";
+import {Redirect, withRouter} from "react-router-dom";
 import Profile from "./Profile";
 import {compose} from "redux";
-import {getProfile, getStatus} from "../../BLL/Selector/Selector";
+import {getId, getIsAuth, getProfile, getStatus} from "../../BLL/Selector/Selector";
 
 
 class ProfileContainerAPI extends React.Component {
-    componentDidMount() {
+
+    renderProfile() {
         let userId = this.props.match.params.userId;
         if (!userId) {
-            userId = 7755
+            userId = this.props.id;
+            if (!userId) {
+                this.props.history.push("/login")
+            }
         }
         this.props.showUserProfile(userId);
         this.props.getStatusThunk(userId);
+    }
+
+    componentDidMount() {
+        this.renderProfile()
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevProps.id !== this.props.id) {
+            this.renderProfile()
+        }
     }
 
     render() {
@@ -30,7 +44,9 @@ class ProfileContainerAPI extends React.Component {
 
 const mapStateToProps = (state) => ({
     profile: getProfile(state),
-    status: getStatus(state)
+    status: getStatus(state),
+    id: getId(state),
+    isAuth: getIsAuth(state)
 });
 
 export default compose(connect(mapStateToProps,

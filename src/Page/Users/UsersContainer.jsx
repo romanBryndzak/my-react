@@ -4,12 +4,10 @@ import {
     getUsersThunk, notFollowButtonStatusThunk, followButtonStatusThunk
 } from "../../BLL/usersReducer";
 import Users from "./Users";
-import {Redirect} from "react-router-dom";
 import {compose} from "redux";
-import {withAuthRedirect} from "../../hok/withAuthRedirect";
 import Preloader from "../../components/axiliary/preloader";
 import {
-    getCurrentPage, getFollowedStatus, getIsAuth,
+    getCurrentPage, getFollowedStatus,
     getIsFetching, getPageSize, getTotalUsers, getUsers
 } from "../../BLL/Selector/Selector";
 
@@ -24,7 +22,6 @@ class UsersContainerAPI extends React.Component {
     };
 
     render() {
-        if (this.props.isAuth === false) return <Redirect to={'/login'}/>;
         return <>
             {this.props.isFetching ? <Preloader/> : null}
             <Users
@@ -48,26 +45,14 @@ const mapStateToProps = (state) => {
         totalUsers: getTotalUsers(state),
         currentPage: getCurrentPage(state),
         isFetching: getIsFetching(state),
-        followedStatus: getFollowedStatus(state),
-        isAuth: getIsAuth(state)
+        followedStatus: getFollowedStatus(state)
     }
 };
-// const mapStateToProps = (state) => {
-//     return {
-//         users: state.users.users,
-//         pageSize: state.users.pageSize,
-//         totalUsers: state.users.totalUsers,
-//         currentPage: state.users.currentPage,
-//         isFetching: state.users.isFetching,
-//         followedStatus: state.users.followedStatus,
-//         isAuth: state.authentic.isAuth
-//     }
-// };
 
 export default compose(
     connect(mapStateToProps,
         {getUsersThunk, notFollowButtonStatusThunk, followButtonStatusThunk}
-    ), withAuthRedirect
+    )
 )(UsersContainerAPI);
 
 

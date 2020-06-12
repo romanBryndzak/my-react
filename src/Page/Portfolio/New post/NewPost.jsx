@@ -1,6 +1,8 @@
 import React from "react";
 import NP from "./NewPost.module.css";
 import {Field, reduxForm} from "redux-form";
+import {Textarea} from "../../../components/axiliary/componentsForForm";
+import {fieldMaxLength, required} from "../../../components/axiliary/validationOnError/filadValidation";
 
 const NewPost = (props) => {
 
@@ -16,11 +18,14 @@ const NewPost = (props) => {
     )
 };
 
+let maxLengthPost50 = fieldMaxLength(50);
+
 const NewPostForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
             <div>
-                <Field component={'textarea'} name={'newPostText'} placeholder={'Added post.'}/>
+                <Field component={Textarea} name={'newPostText'} placeholder={'Added post.'}
+                       validate={[required,maxLengthPost50]}/>
             </div>
             <button className={NP.but}>
                 Add Post

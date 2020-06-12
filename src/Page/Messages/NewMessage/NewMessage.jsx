@@ -1,6 +1,8 @@
 import React from "react";
 import NM from "./NewMessage.module.css";
 import {Field, reduxForm} from "redux-form";
+import {Textarea} from "../../../components/axiliary/componentsForForm";
+import {fieldMaxLength, required} from "../../../components/axiliary/validationOnError/filadValidation";
 
 const NewMessage = (props) => {
 
@@ -16,11 +18,13 @@ const NewMessage = (props) => {
     )
 };
 
+const maxLengthMessage300 = fieldMaxLength(300);
+
 const AddNewMessageForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
-            <Field component={'textarea'} name={'newMessageText'}
-                   placeholder={'Please enter your message'} className={NM.text}
+            <Field component={Textarea} name={'newMessageText'} validate={[required, maxLengthMessage300]}
+                   placeholder={'Please enter your message.'} className={NM.text}
             />
             <button className={NM.but}>Add message</button>
         </form>
