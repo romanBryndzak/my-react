@@ -1,4 +1,5 @@
 import {followedApi, getDataUsers} from "../api/api";
+import {updateObjectInArray} from "../auxiliary/updateObject";
 
 const onFollowAC = 'on_follow';
 const onNotFollowAC = 'on_notFollow';
@@ -23,20 +24,12 @@ const usersReducer = (state = initialUsersState, action) => {
         case onFollowAC:
             return {
                 ...state,
-                users: state.users.map(u => {
-                    if (u.id === action.userId)
-                        return {...u, followed: true};
-                    return u
-                })
+                users: updateObjectInArray(state.users, action.userId, 'id', {followed: true})
             };
         case onNotFollowAC:
             return {
                 ...state,
-                users: state.users.map(u => {
-                    if (u.id === action.userId)
-                        return {...u, followed: false};
-                    return u
-                })
+                users: updateObjectInArray(state.users, action.userId, 'id', {followed: false})
             };
         case onSetUsersAC:
             return {
@@ -78,23 +71,22 @@ export const fixedFollowedButtonStatus = (statusFollowed, id) => ({
 });
 
 const followNotFollowBox = async (dispatch, userId, apiMethod, actionStatus) => {
-        dispatch(fixedFollowedButtonStatus(true, userId));
-        let data = await apiMethod(userId);
-            if (data.resultCode === 0) {
-                dispatch(actionStatus(userId))
-            }
-            dispatch(fixedFollowedButtonStatus(false, userId));
+    dispatch(fixedFollowedButtonStatus(true, userId));
+    let data = await apiMethod(userId);
+    if (data.resultCode === 0) {
+        dispatch(actionStatus(userId))
+    }
+    dispatch(fixedFollowedButtonStatus(false, userId));
 };
 
-export const getUsersThunk = (currentPage, pageSize) => (dispatch) => {
+export const getUsersThunk = (currentPage, pageSize) => async (dispatch) => {
     dispatch(toggleIsFetching(true));
-    getDataUsers.getUsers(currentPage, pageSize)
-        .then(data => {
-            dispatch(setCurrentPage(currentPage));
-            dispatch(toggleIsFetching(false));
-            dispatch(setUsers(data.items));
-            dispatch(getTotalUsersCount(data.totalCount));
-        });
+    let data = await getDataUsers.getUsers(currentPage, pageSize);
+
+    dispatch(setCurrentPage(currentPage));
+    dispatch(toggleIsFetching(false));
+    dispatch(setUsers(data.items));
+    dispatch(getTotalUsersCount(data.totalCount));
 };
 
 export const notFollowButtonStatusThunk = (userId) => async (dispatch) => {
@@ -108,7 +100,6 @@ export const followButtonStatusThunk = (userId) => async (dispatch) => {
 export default usersReducer;
 
 
-
 // export const followButtonStatusThunk = (userId) => (dispatch) => {
 //     dispatch(fixedFollowedButtonStatus(true, userId));
 //     followedApi.yesFollowedUsers(userId).then(data => {
@@ -118,3 +109,13 @@ export default usersReducer;
 //         dispatch(fixedFollowedButtonStatus(false, userId));
 //     })
 // };
+
+// case onNotFollowAC:
+//     return {
+//         ...state,
+//         users: state.users.map(u => {
+//             if (u.id === action.userId)
+//                 return {...u, followed: false};
+//             return u
+//         })
+//     };
