@@ -23,7 +23,6 @@ const messagesReducer = (state = initialMessagesState, action) => {
         case AddNewMessage: {
             let MessageText = action.newMessageText;
             let messageLength = state.messages.length;
-            console.log(messageLength);
                 for (let i = state.messages.length; state.messages.length < i; i++ ){}
 
             return {

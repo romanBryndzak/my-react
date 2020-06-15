@@ -1,9 +1,9 @@
 import {ProfileAPI} from "../api/api";
 
-const addPost = 'addPost';
-const updateNewText = 'updateNewText';
-const setUserProfileAC = 'set_User_Profile';
-const setStatusAC = 'setStatus';
+const updateNewTextAC = 'updateNewTextAC';
+const setUserProfileAC = 'set_User_ProfileAC';
+const setStatusAC = 'setStatusAC';
+const deletePostAC = 'deletePostAC';
 
 let initialProfileState = {
     posts: [
@@ -11,29 +11,13 @@ let initialProfileState = {
         {id: 1, message: 'How are you.', like: 8},
         {id: 2, message: 'I am fine, thank you. And you?', like: 0}
     ],
-    newPostText: 'Hello React!',
     profile: null,
     status: ''
 };
 
 const ProfileReducer = (state = initialProfileState, action) => {
     switch (action.type) {
-        // case addPost: {
-        //     let postsLength = state.posts.length;
-        //     for (let i = state.posts.length; i > state.posts.length; i++) {
-        //     }
-        //     let newPost = {
-        //         id: postsLength,
-        //         message: state.newPostText,
-        //         like: 0
-        //     };
-        //     let stateCopy = {...state};
-        //     stateCopy.posts = [...state.posts];
-        //     stateCopy.posts.push(newPost);
-        //     stateCopy.newPostText = '';
-        //     return stateCopy;
-        // }
-        case updateNewText: {
+        case updateNewTextAC: {
             let postsLength = state.posts.length;
             for (let i = state.posts.length; i > state.posts.length; i++) {
             }
@@ -46,6 +30,9 @@ const ProfileReducer = (state = initialProfileState, action) => {
                 }]
             }
         }
+        case deletePostAC: {
+            return {...state,posts: state.posts.filter(p => p.id !== action.postId)}
+        }
         case setUserProfileAC: {
             return {...state, profile: action.profile}
         }
@@ -57,15 +44,15 @@ const ProfileReducer = (state = initialProfileState, action) => {
     }
 };
 
-export const addPostAction = () => ({type: addPost});
-export const updateNewTextAction = (text) => ({type: updateNewText, newText: text});
-export const setUserProfile = (profile) => ({type: setUserProfileAC, profile});
-export const setStatus = (data) => ({type: setStatusAC, status: data});
+export const updateNewTextAction = (text) => ({type: updateNewTextAC, newText: text});
+export const setUserProfileAction = (profile) => ({type: setUserProfileAC, profile});
+export const setStatusAction = (data) => ({type: setStatusAC, status: data});
+export const deletePostAction = (postId) => ({type: deletePostAC, postId});
 
-export const showUserProfile = (userId) => {
+export const showUserProfileThunk = (userId) => {
     return (dispatch) => {
         ProfileAPI.userProfile(userId).then(data => {
-            dispatch(setUserProfile(data));
+            dispatch(setUserProfileAction(data));
         });
     }
 };
@@ -73,7 +60,7 @@ export const showUserProfile = (userId) => {
 export const getStatusThunk = (userId) => {
     return (dispatch) => {
         ProfileAPI.getStatusUser(userId).then(data => {
-            dispatch(setStatus(data))
+            dispatch(setStatusAction(data))
         })
     }
 };
@@ -82,10 +69,27 @@ export const updateStatusThunk = (status) => {
     return (dispatch) => {
         ProfileAPI.updateStatus(status).then(response => {
             if (response.data.resultCode === 0) {
-                dispatch(setStatus(status))
+                dispatch(setStatusAction(status))
             }
         })
     }
 };
 
 export default ProfileReducer;
+
+// case addPostAC: {
+//     let postsLength = state.posts.length;
+//     for (let i = state.posts.length; i > state.posts.length; i++) {
+//     }
+//     let newPost = {
+//         id: postsLength,
+//         message: state.newPostText,
+//         like: 0
+//     };
+//     let stateCopy = {...state};
+//     stateCopy.posts = [...state.posts];
+//     stateCopy.posts.push(newPost);
+//     stateCopy.newPostText = '';
+//     return stateCopy;
+// }
+// export const addPostAction = () => ({type: addPostAC});

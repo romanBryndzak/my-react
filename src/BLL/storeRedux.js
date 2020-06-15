@@ -1,5 +1,5 @@
 import {applyMiddleware, combineReducers, createStore,} from "redux";
-import ProfileReducer from "./ProfleReducer";
+import ProfileReducer from "./ProfileReducer";
 import messagesReducer from "./messagesReducer";
 import usersReducer from "./usersReducer";
 import AuthenticReducer from "./AuthenticReducer";

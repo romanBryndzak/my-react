@@ -16,14 +16,16 @@ import {initializeThunk} from "./BLL/appReducer";
 import Preloader from "./components/axiliary/preloader";
 
 
-
 class App extends React.Component {
     componentDidMount() {
         this.props.initializeThunk();
     }
 
     render() {
-         if(!this.props.initialized) return <Preloader/>;
+        if (!this.props.initialized) {
+            return <Preloader/>
+        }
+        ;
         return (
             <div className={'app-wrapper'}>
                 <HeaderContainer/>

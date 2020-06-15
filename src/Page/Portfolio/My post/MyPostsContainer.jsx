@@ -1,6 +1,6 @@
 import React from "react";
 import MyPost from "./My post";
-import {addPostAction, updateNewTextAction} from "../../../BLL/ProfleReducer";
+import {addPostAction, updateNewTextAction} from "../../../BLL/ProfileReducer";
 import {connect} from "react-redux";
 
 const mapStateToProps = (state) => {
