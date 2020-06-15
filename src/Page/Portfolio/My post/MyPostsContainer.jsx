@@ -1,6 +1,6 @@
 import React from "react";
 import MyPost from "./My post";
-import {addPostAction, updateNewTextAction} from "../../../BLL/ProfileReducer";
+import { updateNewTextAction} from "../../../BLL/ProfileReducer";
 import {connect} from "react-redux";
 
 const mapStateToProps = (state) => {
@@ -10,40 +10,36 @@ const mapStateToProps = (state) => {
     }
 };
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        onPostMessage: () => {
-            dispatch(addPostAction());
-        },
-        onPostChange: (text) => {
-            dispatch(updateNewTextAction(text));
-        }
-    }
-};
-
-const MyPostContainer = connect(mapStateToProps, mapDispatchToProps)(MyPost);
+const MyPostContainer = connect(mapStateToProps, {updateNewTextAction})(MyPost);
 
 export default MyPostContainer;
 
 
+
 // const MyPostContainer = (props) => {
 //     let state = store.getState();
-//
 //     let postMessage = () => {
 //         props.store.dispatch(addPostAction());
 //     };
-//
 //     let postChange = (text) => {
 //         props.store.dispatch(updateNewTextAction(text));
 //     };
-//
-//     return (
-//         <div>
+//     return ( <div>
 //             <MyPost posts={state.profile.posts}
 //                     newPostText={state.profile.newPostText}
 //                     onPostMessage={postMessage}
 //                     onPostChange={postChange}
 //             />
-//         </div>
-//     )
+//         </div>)
+// };
+
+// const mapDispatchToProps = (dispatch) => {
+//     return {
+//         onPostMessage: () => {
+//             dispatch(addPostAction());
+//         },
+//         onPostChange: (text) => {
+//             dispatch(updateNewTextAction(text));
+//         }
+//     }
 // };

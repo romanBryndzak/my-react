@@ -1,7 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import {
-    setUserProfile, showUserProfileThunk, updateNewTextAction,
+    setUserProfileAction, showUserProfileThunk, updateNewTextAction,
     getStatusThunk, updateStatusThunk
 } from "../../BLL/ProfileReducer";
 import {withRouter} from "react-router-dom";
@@ -51,7 +51,7 @@ const mapStateToProps = (state) => ({
 
 export default compose(connect(mapStateToProps,
     {
-        setUserProfile, updateNewTextAction, showUserProfileThunk,
+        setUserProfileAction, updateNewTextAction, showUserProfileThunk,
         getStatusThunk, updateStatusThunk
     }),
     withRouter
@@ -60,7 +60,7 @@ export default compose(connect(mapStateToProps,
 
 // let ComponentWithRouterURL = withRouter(ProfileContainerAPI);
 // const ProfileContainer = connect(mapStateToProps, {
-//     setUserProfile, addPostAction, updateNewTextAction, showUserProfile
+//     setUserProfileAction, addPostAction, updateNewTextAction, showUserProfile
 // })(ComponentWithRouterURL);
 //
 // export default ProfileContainer;

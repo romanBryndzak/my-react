@@ -14,7 +14,7 @@ const MyPost = (props) => {
     return (
         <div>
             <NewPost onPostMessage={props.onPostMessage}
-                     onPostChange={props.onPostChange}
+                     updateNewTextAction={props.updateNewTextAction}
                      newPostText={props.newPostText}
             />
             <div className={mp.postElement}>

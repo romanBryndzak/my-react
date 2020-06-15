@@ -1,14 +1,14 @@
 import React from "react";
 import NP from "./NewPost.module.css";
 import {Field, reduxForm} from "redux-form";
-import {Textarea} from "../../../components/axiliary/componentsForForm";
-import {fieldMaxLength, required} from "../../../components/axiliary/validationOnError/filadValidation";
+import {Textarea} from "../../../auxiliary/componentsForForm";
+import {fieldMaxLength, required} from "../../../auxiliary/validationOnError/filadValidation";
 
 const NewPost = (props) => {
 
     let onPostChange = (values) => {
         let text = values.newPostText;
-        props.onPostChange(text);
+        props.updateNewTextAction(text);
     };
 
     return (

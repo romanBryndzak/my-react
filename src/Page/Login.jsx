@@ -1,12 +1,12 @@
 import React from "react";
 import Field from "redux-form/lib/Field";
 import reduxForm from "redux-form/lib/reduxForm";
-import {Input} from "../components/axiliary/componentsForForm";
-import {required} from "../components/axiliary/validationOnError/filadValidation";
+import {Input} from "../auxiliary/componentsForForm";
+import {required} from "../auxiliary/validationOnError/filadValidation";
 import {connect} from "react-redux";
 import {loginThunk} from "../BLL/AuthenticReducer";
 import {Redirect} from "react-router-dom";
-import auxiliary from "./../components/axiliary/auxiliary.module.css";
+import auxiliary from "../auxiliary/auxiliary.module.css";
 
 const LoginForm = (props) => {
     return (

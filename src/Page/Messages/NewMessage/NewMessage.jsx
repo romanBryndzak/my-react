@@ -1,8 +1,8 @@
 import React from "react";
 import NM from "./NewMessage.module.css";
 import {Field, reduxForm} from "redux-form";
-import {Textarea} from "../../../components/axiliary/componentsForForm";
-import {fieldMaxLength, required} from "../../../components/axiliary/validationOnError/filadValidation";
+import {Textarea} from "../../../auxiliary/componentsForForm";
+import {fieldMaxLength, required} from "../../../auxiliary/validationOnError/filadValidation";
 
 const NewMessage = (props) => {
 

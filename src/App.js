@@ -13,7 +13,7 @@ import Login from "./Page/Login";
 import {compose} from "redux";
 import {connect} from "react-redux";
 import {initializeThunk} from "./BLL/appReducer";
-import Preloader from "./components/axiliary/preloader";
+import Preloader from "./auxiliary/preloader";
 
 
 class App extends React.Component {
@@ -25,7 +25,7 @@ class App extends React.Component {
         if (!this.props.initialized) {
             return <Preloader/>
         }
-        ;
+
         return (
             <div className={'app-wrapper'}>
                 <HeaderContainer/>

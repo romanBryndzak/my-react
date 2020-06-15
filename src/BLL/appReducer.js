@@ -1,4 +1,4 @@
-import {identificationMeThunk, setUserData} from "./AuthenticReducer";
+import {identificationMeThunk} from "./AuthenticReducer";
 
 const initializedAC = 'initializedAC';
 

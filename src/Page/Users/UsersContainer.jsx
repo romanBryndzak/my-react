@@ -5,7 +5,7 @@ import {
 } from "../../BLL/usersReducer";
 import Users from "./Users";
 import {compose} from "redux";
-import Preloader from "../../components/axiliary/preloader";
+import Preloader from "../../auxiliary/preloader";
 import {
     getCurrentPage, getFollowedStatus,
     getIsFetching, getPageSize, getTotalUsers, getUsers

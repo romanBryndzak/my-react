@@ -27,14 +27,12 @@ export const setUserData = (userId, email, login, isAuth) => ({
     newData: {id: userId, email, login, isAuth}
 });
 
-export const identificationMeThunk = () => (dispatch) => {
-    authenticAPI.me()
-        .then(response => {
-        if (response.data.resultCode === 0) {
-            let {id, email, login} = response.data.data;
-            dispatch(setUserData(id, email, login, true))
-        }
-    });
+export const identificationMeThunk = () => async (dispatch) => {
+    let response = await authenticAPI.me();
+    if (response.data.resultCode === 0) {
+        let {id, email, login} = response.data.data;
+        dispatch(setUserData(id, email, login, true))
+    }
 };
 
 export const loginThunk = (email, password, rememberMe) => {
@@ -55,10 +53,10 @@ export const logoutThunk = () => {
     return (dispatch) => {
         authenticAPI.logout()
             .then(response => {
-            if (response.data.resultCode === 0) {
-                dispatch(setUserData(null, null, null, false))
-            }
-        })
+                if (response.data.resultCode === 0) {
+                    dispatch(setUserData(null, null, null, false))
+                }
+            })
     }
 };
 

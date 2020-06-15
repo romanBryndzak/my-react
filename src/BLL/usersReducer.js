@@ -74,48 +74,47 @@ export const setCurrentPage = (currentPage) => ({type: setCurrentPageAC, current
 export const getTotalUsersCount = (totalCount) => ({type: getTotalUsersCountAC, totalCount});
 export const toggleIsFetching = (isFetching) => ({type: toggleIsFetchingAC, isFetching});
 export const fixedFollowedButtonStatus = (statusFollowed, id) => ({
-    type: followedButtonStatusAC,
-    statusFollowed,
-    userId: id
+    type: followedButtonStatusAC, statusFollowed, userId: id
 });
 
-export const getUsersThunk = (currentPage, pageSize) => {
-    return (dispatch) => {
-        dispatch(toggleIsFetching(true));
-        getDataUsers.getUsers(currentPage, pageSize)
-            .then(data => {
-                dispatch(setCurrentPage(currentPage));
-                dispatch(toggleIsFetching(false));
-                dispatch(setUsers(data.items));
-                dispatch(getTotalUsersCount(data.totalCount));
-            });
-    };
-};
-
-export const notFollowButtonStatusThunk = (userId) => {
-    return (dispatch) => {
+const followNotFollowBox = async (dispatch, userId, apiMethod, actionStatus) => {
         dispatch(fixedFollowedButtonStatus(true, userId));
-        followedApi.notFollowedUsers(userId).then(data => {
+        let data = await apiMethod(userId);
             if (data.resultCode === 0) {
-                dispatch(notFollow(userId))
+                dispatch(actionStatus(userId))
             }
             dispatch(fixedFollowedButtonStatus(false, userId));
-        })
-
-    }
 };
 
-export const followButtonStatusThunk = (userId) => {
-    return (dispatch) => {
-        dispatch(fixedFollowedButtonStatus(true, userId));
-        followedApi.yesFollowedUsers(userId).then(data => {
-            if (data.resultCode === 0) {
-                dispatch(yesFollow(userId))
-            }
-            dispatch(fixedFollowedButtonStatus(false, userId));
-        })
+export const getUsersThunk = (currentPage, pageSize) => (dispatch) => {
+    dispatch(toggleIsFetching(true));
+    getDataUsers.getUsers(currentPage, pageSize)
+        .then(data => {
+            dispatch(setCurrentPage(currentPage));
+            dispatch(toggleIsFetching(false));
+            dispatch(setUsers(data.items));
+            dispatch(getTotalUsersCount(data.totalCount));
+        });
+};
 
-    }
+export const notFollowButtonStatusThunk = (userId) => async (dispatch) => {
+    await followNotFollowBox(dispatch, userId, followedApi.notFollowedUsers, notFollow)
+};
+
+export const followButtonStatusThunk = (userId) => async (dispatch) => {
+    await followNotFollowBox(dispatch, userId, followedApi.yesFollowedUsers, yesFollow)
 };
 
 export default usersReducer;
+
+
+
+// export const followButtonStatusThunk = (userId) => (dispatch) => {
+//     dispatch(fixedFollowedButtonStatus(true, userId));
+//     followedApi.yesFollowedUsers(userId).then(data => {
+//         if (data.resultCode === 0) {
+//             dispatch(yesFollow(userId))
+//         }
+//         dispatch(fixedFollowedButtonStatus(false, userId));
+//     })
+// };
