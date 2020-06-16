@@ -9,38 +9,26 @@ const state = {
     ]
 };
 
-test ('Length post should be incremented', () => {
-
-    const action = updateNewTextAction ('Hello');
-
+test('Length post should be incremented', () => {
+    const action = updateNewTextAction('Hello');
     let newState = ProfileReducer(state, action);
-
     expect(newState.posts.length).toBe(4);
 });
 
-test ('Text in new post should be correct', () => {
-
-    const action = updateNewTextAction ('Hello');
-
+test('Text in new post should be correct', () => {
+    const action = updateNewTextAction('Hello');
     let newState = ProfileReducer(state, action);
-
     expect(newState.posts[3].message).toBe('Hello');
 });
 
-test ('After deleting length post should be decrement', () => {
-
-    const action = deletePostAction (1);
-
+test('After deleting length post should be decrement', () => {
+    const action = deletePostAction(1);
     let newState = ProfileReducer(state, action);
-
-   expect(newState.posts.length).toBe(3);
+    expect(newState.posts.length).toBe(3);
 });
 
-test ('After deleting length post should not be decrement if postId is incorrect', () => {
-
-    const action = deletePostAction (100);
-
+test('After deleting length post should not be decrement if postId is incorrect', () => {
+    const action = deletePostAction(100);
     let newState = ProfileReducer(state, action);
-
-   expect(newState.posts.length).toBe(3);
+    expect(newState.posts.length).toBe(3);
 });

@@ -26,9 +26,9 @@ class UsersContainerAPI extends React.Component {
             {this.props.isFetching ? <Preloader/> : null}
             <Users
                 users={this.props.users}
-                currentPage={this.props.currentPage}
                 pageSize={this.props.pageSize}
                 totalUsers={this.props.totalUsers}
+                currentPage={this.props.currentPage}
                 followedStatus={this.props.followedStatus}
                 onChangedPageNumber={this.onChangedPageNumber}
                 followButtonStatusThunk={this.props.followButtonStatusThunk}

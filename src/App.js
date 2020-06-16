@@ -11,9 +11,11 @@ import ProfileContainer from "./Page/Portfolio/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Login from "./Page/Login";
 import {compose} from "redux";
-import {connect} from "react-redux";
+import {connect, Provider} from "react-redux";
 import {initializeThunk} from "./BLL/appReducer";
 import Preloader from "./auxiliary/preloader";
+import store from "./BLL/storeRedux";
+import {BrowserRouter} from "react-router-dom";
 
 
 class App extends React.Component {
@@ -50,7 +52,17 @@ let mapStateToProps = (state) => {
     }
 };
 
-export default compose(
+const AppContainer = compose(
     withRouter,
     connect(mapStateToProps, {initializeThunk})
 )(App);
+
+const SocialNetworkApp = () => {
+    return <BrowserRouter>
+        <Provider store={store}>
+            <AppContainer/>
+        </Provider>
+    </BrowserRouter>
+};
+
+export default SocialNetworkApp;
