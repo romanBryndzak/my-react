@@ -3,11 +3,18 @@ import PI from "./ProfileInfo.module.css";
 import city from "../../../image/city.jpg"
 import Preloader from "../../../auxiliary/preloader";
 import ProfileStatus from "../ProfileStatus/ProfileStatus";
+import avaUser from "../../../image/avaUsers.jpg"
 
-const ProfileInfo = (props) => {
-    if (props.profile === null || props.profile === undefined) {
+const ProfileInfo = ({profile, isOwner, savePhoto, photos, ...props}) => {
+    if (profile === null || profile === undefined) {
         return <Preloader/>
     }
+
+    let onPhotoSelect = (e) => {
+        if (e.target.files.length) {
+            props.savePhotoUserThunk(e.target.files[0])
+        }
+    };
 
     return (
         <div>
@@ -15,13 +22,17 @@ const ProfileInfo = (props) => {
                 <img className={PI.img1} src={city} alt={'img'}/>
             </div>
             <div>
-                <img className={PI.img2}
-                     src={props.profile.photos.large} alt={'img'}/>
-                {/*<img className={PI.img2}*/}
-                {/*src='https://img4.automoto.ua/overview/Ford-Mustang-2020-3fd-huge-1564.jpg' alt={'img'}/>*/}
+                {isOwner && <input type={'file'} onChange={onPhotoSelect}/>}
             </div>
             <div>
-                <ProfileStatus status={props.status} updateStatusThunk={props.updateStatusThunk}/>
+                <img className={PI.img2}
+                     src={profile.photos.large || avaUser} alt={'img'}/>
+            </div>
+            <div>
+                <ProfileStatus
+                    status={props.status}
+                    updateStatusThunk={props.updateStatusThunk}
+                />
             </div>
             {/*<div className={PI.info}>*/}
             {/*    <div>"aboutMe":{props.profile.aboutMe}</div>*/}

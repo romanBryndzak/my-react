@@ -9,6 +9,7 @@ class HeaderContainerApi extends React.Component {
         return <Header {...this.props}
                        isAuth={this.props.isAuth}
                        login={this.props.login}
+                       logoutThunk={this.props.logoutThunk}
         />
     }
 }

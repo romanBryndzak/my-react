@@ -2,7 +2,7 @@ import React from "react";
 import {connect} from "react-redux";
 import {
     setUserProfileAction, showUserProfileThunk, updateNewTextAction,
-    getStatusThunk, updateStatusThunk
+    getStatusThunk, updateStatusThunk, savePhotoUserThunk
 } from "../../BLL/ProfileReducer";
 import {withRouter} from "react-router-dom";
 import Profile from "./Profile";
@@ -36,8 +36,13 @@ class ProfileContainerAPI extends React.Component {
 
     render() {
         return (
-            <Profile {...this.props} profile={this.props.profile}
-                     status={this.props.status} updateStatusThunk={this.props.updateStatusThunk}/>
+            <Profile {...this.props}
+                     isOwner={!this.props.match.params.userId}
+                     profile={this.props.profile}
+                     photos={this.props.photos}
+                     savePhotoUserThunk={this.props.savePhotoUserThunk}
+                     status={this.props.status}
+                     updateStatusThunk={this.props.updateStatusThunk}/>
         );
     }
 }
@@ -46,13 +51,14 @@ const mapStateToProps = (state) => ({
     profile: getProfile(state),
     status: getStatus(state),
     id: getId(state),
-    isAuth: getIsAuth(state)
+    isAuth: getIsAuth(state),
+    photos: state.profile.photos
 });
 
 export default compose(connect(mapStateToProps,
     {
         setUserProfileAction, updateNewTextAction, showUserProfileThunk,
-        getStatusThunk, updateStatusThunk
+        getStatusThunk, updateStatusThunk, savePhotoUserThunk
     }),
     withRouter
 )(ProfileContainerAPI);

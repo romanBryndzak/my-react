@@ -4,6 +4,7 @@ const updateNewTextAC = 'updateNewTextAC';
 const setUserProfileAC = 'set_User_ProfileAC';
 const setStatusAC = 'setStatusAC';
 const deletePostAC = 'deletePostAC';
+const savePhotoUserAC = 'savePhotoUserAC';
 
 let initialProfileState = {
     posts: [
@@ -12,7 +13,8 @@ let initialProfileState = {
         {id: 2, message: 'I am fine, thank you. And you?', like: 0}
     ],
     profile: null,
-    status: ''
+    status: '',
+    photos: {large: null, small: null}
 };
 
 const ProfileReducer = (state = initialProfileState, action) => {
@@ -39,6 +41,9 @@ const ProfileReducer = (state = initialProfileState, action) => {
         case setStatusAC: {
             return {...state, status: action.status}
         }
+        case savePhotoUserAC: {
+            return {...state, profile: {...state.profile, photos: action.photos}}
+        }
         default:
             return state;
     }
@@ -48,6 +53,7 @@ export const updateNewTextAction = (text) => ({type: updateNewTextAC, newText: t
 export const setUserProfileAction = (profile) => ({type: setUserProfileAC, profile});
 export const setStatusAction = (data) => ({type: setStatusAC, status: data});
 export const deletePostAction = (postId) => ({type: deletePostAC, postId});
+export const setSavePhotoUserAction = (photos) => ({type: savePhotoUserAC, photos});
 
 export const showUserProfileThunk = (userId) => async (dispatch) => {
     let data = await ProfileAPI.userProfile(userId);
@@ -63,6 +69,13 @@ export const updateStatusThunk = (status) => async (dispatch) => {
     let response = await ProfileAPI.updateStatus(status);
     if (response.data.resultCode === 0) {
         dispatch(setStatusAction(status))
+    }
+};
+
+export const savePhotoUserThunk = (photo) => async (dispatch) => {
+    let response = await ProfileAPI.updatePhotoUser(photo);
+    if (response.data.resultCode === 0) {
+        dispatch(setSavePhotoUserAction(response.data.data.photos))
     }
 };
 
