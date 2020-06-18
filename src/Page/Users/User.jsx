@@ -1,6 +1,6 @@
 import React from "react";
 import U from "./Users.module.css";
-import avaUsers from "./../../image/avaUsers.jpg"
+import avaUsers from "./../../image/avaUser1.png"
 import {NavLink} from "react-router-dom";
 
 

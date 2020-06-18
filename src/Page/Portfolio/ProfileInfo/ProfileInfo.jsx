@@ -1,9 +1,8 @@
 import React from "react";
 import PI from "./ProfileInfo.module.css";
-import city from "../../../image/city.jpg"
 import Preloader from "../../../auxiliary/preloader";
 import ProfileStatus from "../ProfileStatus/ProfileStatus";
-import avaUser from "../../../image/avaUsers.jpg"
+import avaUser from "../../../image/avaUser1.png"
 
 const ProfileInfo = ({profile, isOwner, savePhoto, photos, ...props}) => {
     if (profile === null || profile === undefined) {
@@ -18,9 +17,6 @@ const ProfileInfo = ({profile, isOwner, savePhoto, photos, ...props}) => {
 
     return (
         <div>
-            <div>
-                <img className={PI.img1} src={city} alt={'img'}/>
-            </div>
             <div>
                 {isOwner && <input type={'file'} onChange={onPhotoSelect}/>}
             </div>

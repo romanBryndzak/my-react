@@ -4,10 +4,10 @@ import {
     setUserProfileAction, showUserProfileThunk, updateNewTextAction,
     getStatusThunk, updateStatusThunk, savePhotoUserThunk
 } from "../../BLL/ProfileReducer";
-import {withRouter} from "react-router-dom";
 import Profile from "./Profile";
 import {compose} from "redux";
 import {getId, getIsAuth, getProfile, getStatus} from "../../BLL/Selector/Selector";
+import withRouter from "react-router-dom/es/withRouter";
 
 
 class ProfileContainerAPI extends React.Component {
@@ -55,7 +55,8 @@ const mapStateToProps = (state) => ({
     photos: state.profile.photos
 });
 
-export default compose(connect(mapStateToProps,
+export default compose(
+    connect(mapStateToProps,
     {
         setUserProfileAction, updateNewTextAction, showUserProfileThunk,
         getStatusThunk, updateStatusThunk, savePhotoUserThunk
