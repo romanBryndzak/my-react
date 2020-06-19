@@ -1,4 +1,3 @@
-import React from "react";
 import MyPost from "./My post";
 import { updateNewTextAction} from "../../../BLL/ProfileReducer";
 import {connect} from "react-redux";

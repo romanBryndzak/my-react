@@ -7,7 +7,7 @@ import {
 import Profile from "./Profile";
 import {compose} from "redux";
 import {getId, getIsAuth, getProfile, getStatus} from "../../BLL/Selector/Selector";
-import withRouter from "react-router-dom/es/withRouter";
+import {withRouter} from "react-router-dom";
 
 
 class ProfileContainerAPI extends React.Component {
@@ -29,7 +29,7 @@ class ProfileContainerAPI extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        if (prevProps.id !== this.props.id) {
+        if (prevProps.match.params.userId !== this.props.match.params.userId) {
             this.renderProfile()
         }
     }

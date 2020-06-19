@@ -5,8 +5,8 @@ let initialMessagesState = {
         {id: 0, name: 'Roman'},
         {id: 1, name: 'Ros'},
         {id: 2, name: 'Mike'},
-        {id: 3, name: 'Pavlo'},
-        {id: 4, name: 'Snezhka'},
+        {id: 3, name: 'Paulo'},
+        {id: 4, name: 'Snezka'},
         {id: 5, name: 'Illia'},
     ],
     messages: [

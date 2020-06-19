@@ -11,22 +11,21 @@
     padding-top: 6px;
 }
 
-/*.info {*/
-/*    border: black solid 1px;*/
-/*    font-size: 15px;*/
-/*    margin: 5px;*/
-/*    background-color: white;*/
-/*}*/
+.info {
+    border: solid 1px grey;
+    font-size: 15px;
+    margin: 3px;
+}
 
-/*.info div {*/
-/*    margin: 5px;*/
-/*}*/
+.info div {
+    margin: 5px;
+}
 
 
-/*.contacts {*/
-/*    padding: 5px;*/
-/*}*/
+.contacts {
+    padding: 5px;
+}
 
-/*.contacts div {*/
-/*    margin-left: 15px;*/
-/*}*/
+.contacts div {
+    margin-left: 15px;
+}

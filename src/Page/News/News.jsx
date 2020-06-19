@@ -1,7 +1,6 @@
 import React from "react";
-import N from "./News.module.css";
 
-let News = (props) => {
+let News = () => {
     return (
         <div>
             News

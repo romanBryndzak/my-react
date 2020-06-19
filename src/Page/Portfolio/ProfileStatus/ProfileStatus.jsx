@@ -27,7 +27,7 @@ const ProfileStatus = (props) => {
     return (
         <div>
             <div>{!editMode &&
-            <span onClick={activateEditMode}>{props.status}</span>
+            <span onClick={activateEditMode}><b>Status</b>: {props.status}</span>
             }
             </div>
             <div>{editMode &&
