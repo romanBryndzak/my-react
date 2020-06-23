@@ -15,6 +15,7 @@ const Users = (props) => {
             <User
                 users={props.users}
                 followedStatus={props.followedStatus}
+                followButtonStatusThunk={props.followButtonStatusThunk}
                 notFollowButtonStatusThunk={props.notFollowButtonStatusThunk}
             />
         </div>

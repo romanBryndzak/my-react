@@ -2,6 +2,7 @@ import React from "react";
 import U from "./Users.module.css";
 import avaUsers from "./../../image/avaUser.png"
 import {NavLink} from "react-router-dom";
+import auxiliary from "../../auxiliary/auxiliary.module.css";
 
 
 const User = (props) => {
@@ -21,12 +22,12 @@ const User = (props) => {
                                      <button disabled={props.followedStatus.some(id => id === u.id)}
                                              onClick={() => {
                                                  props.notFollowButtonStatusThunk(u.id)
-                                             }} className={U.but}> Not follow </button>
+                                             }} className={auxiliary.but}> Not follow </button>
                                      :
                                      <button disabled={props.followedStatus.some(id => id === u.id)}
                                              onClick={() => {
                                                  props.followButtonStatusThunk(u.id)
-                                             }} className={U.but}> Yes follow </button>}
+                                             }} className={auxiliary.but}> Yes follow </button>}
                                  </div>
                              </span>
                     <span className={U.wrapper}>

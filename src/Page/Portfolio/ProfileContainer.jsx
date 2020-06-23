@@ -2,11 +2,11 @@ import React from "react";
 import {connect} from "react-redux";
 import {
     setUserProfileAction, showUserProfileThunk, updateNewTextAction,
-    getStatusThunk, updateStatusThunk, savePhotoUserThunk
+    getStatusThunk, updateStatusThunk, savePhotoUserThunk, saveInfoAboutUserThunk
 } from "../../BLL/ProfileReducer";
 import Profile from "./Profile";
 import {compose} from "redux";
-import {getId, getIsAuth, getProfile, getStatus} from "../../BLL/Selector/Selector";
+import {getId, getIsAuth, getPhotoUser, getProfile, getStatus} from "../../BLL/Selector/Selector";
 import {withRouter} from "react-router-dom";
 
 
@@ -42,7 +42,9 @@ class ProfileContainerAPI extends React.Component {
                      photos={this.props.photos}
                      savePhotoUserThunk={this.props.savePhotoUserThunk}
                      status={this.props.status}
-                     updateStatusThunk={this.props.updateStatusThunk}/>
+                     updateStatusThunk={this.props.updateStatusThunk}
+                     saveInfoAboutUserThunk={this.props.saveInfoAboutUserThunk}
+            />
         );
     }
 }
@@ -52,14 +54,14 @@ const mapStateToProps = (state) => ({
     status: getStatus(state),
     id: getId(state),
     isAuth: getIsAuth(state),
-    photos: state.profile.photos
+    photos: getPhotoUser(state)
 });
 
 export default compose(
     connect(mapStateToProps,
     {
         setUserProfileAction, updateNewTextAction, showUserProfileThunk,
-        getStatusThunk, updateStatusThunk, savePhotoUserThunk
+        getStatusThunk, updateStatusThunk, savePhotoUserThunk, saveInfoAboutUserThunk
     }),
     withRouter
 )(ProfileContainerAPI);

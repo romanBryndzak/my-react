@@ -6,7 +6,7 @@ const setStatusAC = 'setStatusAC';
 const deletePostAC = 'deletePostAC';
 const savePhotoUserAC = 'savePhotoUserAC';
 
-let initialProfileState = {
+const initialProfileState = {
     posts: [
         {id: 0, message: 'Hello!', like: 10},
         {id: 1, message: 'How are you.', like: 8},
@@ -20,7 +20,7 @@ let initialProfileState = {
 const ProfileReducer = (state = initialProfileState, action) => {
     switch (action.type) {
         case updateNewTextAC: {
-            let postsLength = state.posts.length;
+            const postsLength = state.posts.length;
             for (let i = state.posts.length; i > state.posts.length; i++) {
             }
             return {
@@ -56,41 +56,50 @@ export const deletePostAction = (postId) => ({type: deletePostAC, postId});
 export const setSavePhotoUserAction = (photos) => ({type: savePhotoUserAC, photos});
 
 export const showUserProfileThunk = (userId) => async (dispatch) => {
-    let data = await ProfileAPI.userProfile(userId);
+    const data = await ProfileAPI.userProfile(userId);
     dispatch(setUserProfileAction(data));
 };
 
 export const getStatusThunk = (userId) => async (dispatch) => {
-    let data = await ProfileAPI.getStatusUser(userId);
+    const data = await ProfileAPI.getStatusUser(userId);
     dispatch(setStatusAction(data))
 };
 
 export const updateStatusThunk = (status) => async (dispatch) => {
-    let response = await ProfileAPI.updateStatus(status);
+    const response = await ProfileAPI.updateStatus(status);
     if (response.data.resultCode === 0) {
         dispatch(setStatusAction(status))
     }
 };
 
 export const savePhotoUserThunk = (photo) => async (dispatch) => {
-    let response = await ProfileAPI.updatePhotoUser(photo);
+    const response = await ProfileAPI.updatePhotoUser(photo);
     if (response.data.resultCode === 0) {
         dispatch(setSavePhotoUserAction(response.data.data.photos))
+    }
+};
+export const saveInfoAboutUserThunk = (profile) => async (dispatch, getState) => {
+    debugger
+    const userId = getState().authentic.userId;
+    const response = await ProfileAPI.updateInfoAboutUser(profile);
+    debugger
+    if (response.data.resultCode === 0) {
+        dispatch(showUserProfileThunk(userId))
     }
 };
 
 export default ProfileReducer;
 
 // case addPostAC: {
-//     let postsLength = state.posts.length;
+//     const postsLength = state.posts.length;
 //     for (let i = state.posts.length; i > state.posts.length; i++) {
 //     }
-//     let newPost = {
+//     const newPost = {
 //         id: postsLength,
 //         message: state.newPostText,
 //         like: 0
 //     };
-//     let stateCopy = {...state};
+//     const stateCopy = {...state};
 //     stateCopy.posts = [...state.posts];
 //     stateCopy.posts.push(newPost);
 //     stateCopy.newPostText = '';

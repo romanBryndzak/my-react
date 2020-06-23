@@ -4,7 +4,7 @@ import {stopSubmit} from "redux-form";
 const setUserDataAC = 'setUserDataAC';
 
 let initialAuthenticState = {
-    id: null,
+    userId: null,
     email: null,
     login: null,
     isAuth: false,
@@ -24,7 +24,7 @@ const AuthenticReducer = (state = initialAuthenticState, action) => {
 
 export const setUserData = (userId, email, login, isAuth) => ({
     type: setUserDataAC,
-    newData: {id: userId, email, login, isAuth}
+    newData: {userId, email, login, isAuth}
 });
 
 export const identificationMeThunk = () => async (dispatch) => {

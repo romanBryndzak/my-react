@@ -11,6 +11,14 @@
     padding-top: 6px;
 }
 
+.formInfo {
+    border: solid 1px grey;
+    padding: 5px;
+}
+.formInfo button{
+    margin-bottom: 5px;
+}
+
 .info {
     border: solid 1px grey;
     font-size: 15px;
@@ -21,6 +29,9 @@
     margin: 5px;
 }
 
+.wrapperInfoUser {
+    margin: 15px;
+}
 
 .contacts {
     padding: 5px;

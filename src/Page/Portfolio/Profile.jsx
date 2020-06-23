@@ -12,7 +12,9 @@ const Profile = (props) => {
                     photos={props.photos}
                     savePhotoUserThunk={props.savePhotoUserThunk}
                     status={props.status}
-                    updateStatusThunk={props.updateStatusThunk}/>
+                    updateStatusThunk={props.updateStatusThunk}
+                    saveInfoAboutUserThunk={props.saveInfoAboutUserThunk}
+                />
             </div>
             <div>
                 <MyPostContainer/>

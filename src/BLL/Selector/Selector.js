@@ -1,3 +1,4 @@
+//Users
 export const getUsers = (state) => {
     return state.users.users
 };
@@ -16,8 +17,10 @@ export const getIsFetching = (state) => {
 export const getFollowedStatus = (state) => {
     return state.users.followedStatus
 };
-export const getIsAuth = (state) => {
-    return state.authentic.isAuth
+
+//Profile
+export const getPhotoUser = (state) => {
+    return state.profile.photos
 };
 export  const getProfile = (state) => {
     return state.profile.profile
@@ -25,6 +28,11 @@ export  const getProfile = (state) => {
 export const getStatus = (state) => {
     return state.profile.status
 };
+
+//Authentic
 export const getId = (state) => {
-    return state.authentic.id
+    return state.authentic.userId
+};
+export const getIsAuth = (state) => {
+    return state.authentic.isAuth
 };

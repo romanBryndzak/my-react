@@ -25,7 +25,7 @@ const LoginForm = (props) => {
                 {props.error}
             </span>}
             <div>
-                <button>Login</button>
+                <button className={auxiliary.but}>Login</button>
             </div>
         </form>
     )
