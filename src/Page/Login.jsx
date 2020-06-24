@@ -7,6 +7,7 @@ import {connect} from "react-redux";
 import {loginThunk} from "../BLL/AuthenticReducer";
 import {Redirect} from "react-router-dom";
 import auxiliary from "../auxiliary/auxiliary.module.css";
+import {getCaptchaUrlSelector, getIsAuth} from "../BLL/Selector/Selector";
 
 const LoginForm = (props) => {
     return (
@@ -21,9 +22,15 @@ const LoginForm = (props) => {
             <div>
                 <Field component={Input} name={'rememberMe'} type={"checkbox"}/> Remember me
             </div>
-            {props.error && <span className={auxiliary.commonError}>
-                {props.error}
-            </span>}
+            <div>
+                {props.captchaUrl && <img src={props.captchaUrl} alt={'captcha'}/>}
+                {props.captchaUrl &&
+                <Field name={'captcha'} placeholder={'Enter symbol with image.'} component={Input}/>
+                }
+            </div>
+            <div className={auxiliary.errorLogin}>
+                {props.error && <span className={auxiliary.commonError}>{props.error}</span>}
+            </div>
             <div>
                 <button className={auxiliary.but}>Login</button>
             </div>
@@ -35,7 +42,7 @@ const LoginReduxForm = reduxForm({form: "login"})(LoginForm);
 
 const Login = (props) => {
     const onSubmit = (formData) => {
-        props.loginThunk(formData.email, formData.password, formData.rememberMe);
+        props.loginThunk(formData.email, formData.password, formData.rememberMe, formData.captcha);
     };
 
     if (props.isAuth) {
@@ -45,13 +52,14 @@ const Login = (props) => {
     return (
         <div>
             <h1>Login</h1>
-            <LoginReduxForm onSubmit={onSubmit}/>
+            <LoginReduxForm onSubmit={onSubmit} captchaUrl={props.captchaUrl}/>
         </div>
     )
 };
 
 const mapStateToProps = (state) => ({
-    isAuth: state.authentic.isAuth
+    isAuth: getIsAuth(state),
+    captchaUrl: getCaptchaUrlSelector(state)
 });
 
 export default connect(mapStateToProps, {loginThunk})(Login);

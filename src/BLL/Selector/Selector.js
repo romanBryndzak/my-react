@@ -36,3 +36,7 @@ export const getId = (state) => {
 export const getIsAuth = (state) => {
     return state.authentic.isAuth
 };
+
+export const getCaptchaUrlSelector = (state) => {
+    return state.authentic.captchaUrl
+};
