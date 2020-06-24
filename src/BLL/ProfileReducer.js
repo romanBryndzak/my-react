@@ -1,4 +1,5 @@
 import {ProfileAPI} from "../api/api";
+import {stopSubmit} from "redux-form";
 
 const updateNewTextAC = 'updateNewTextAC';
 const setUserProfileAC = 'set_User_ProfileAC';
@@ -84,7 +85,10 @@ export const saveInfoAboutUserThunk = (profile) => async (dispatch, getState) =>
     const response = await ProfileAPI.updateInfoAboutUser(profile);
     debugger
     if (response.data.resultCode === 0) {
-        dispatch(showUserProfileThunk(userId))
+        dispatch(showUserProfileThunk(userId));
+
+    } else {
+        dispatch(stopSubmit('InfoAboutUser', {_error: response.data.messages}))
     }
 };
 

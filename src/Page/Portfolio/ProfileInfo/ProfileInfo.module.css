@@ -14,6 +14,7 @@
 .formInfo {
     border: solid 1px grey;
     padding: 5px;
+    margin-top: 5px;
 }
 .formInfo button{
     margin-bottom: 5px;

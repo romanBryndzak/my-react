@@ -30,7 +30,6 @@ const ProfileInfo = ({profile, isOwner, savePhoto, photos, ...props}) => {
     };
     const onSubmit = (formData) => {
         props.saveInfoAboutUserThunk(formData);
-        deactivatedEditMode();
     };
     return (
         <div>
@@ -49,8 +48,13 @@ const ProfileInfo = ({profile, isOwner, savePhoto, photos, ...props}) => {
             </div>
             <div className={PI.wrapperInfoUser}>
                 {editMode
-                    ? <InfoAboutUserFrom initialValues={profile} profile={profile} onSubmit={onSubmit}/>
-                    : <InfoAboutUser profile={profile} editMode={editMode} activatedEditMode={activatedEditMode}/>}
+                    ? <InfoAboutUserFrom initialValues={profile} profile={profile} onSubmit={onSubmit}
+                                         editMode={editMode} deactivatedEditMode={deactivatedEditMode}
+                    />
+                    : <InfoAboutUser profile={profile} editMode={editMode} isOwner={isOwner}
+                                     activatedEditMode={activatedEditMode}
+                    />
+                }
             </div>
         </div>
     )

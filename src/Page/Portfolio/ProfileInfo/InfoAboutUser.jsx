@@ -2,7 +2,7 @@ import React from "react";
 import PI from "./ProfileInfo.module.css";
 import auxiliary from "../../../auxiliary/auxiliary.module.css";
 
-const InfoAboutUser = ({profile, editMode, ...props}) => {
+const InfoAboutUser = ({profile, editMode, isOwner, ...props}) => {
     const Contact = ({contactTitle, contactValue}) => {
         return <div>
             <b>{contactTitle}</b>: {contactValue}
@@ -11,9 +11,9 @@ const InfoAboutUser = ({profile, editMode, ...props}) => {
 
     return (
         <div>
-            <button className={auxiliary.but}
-                    onClick={props.activatedEditMode}> {!editMode && 'Edit mode'}
+            {isOwner && <button className={auxiliary.but} onClick={props.activatedEditMode}> {!editMode && 'Edit mode'}
             </button>
+            }
             <div className={PI.info}>
                 <div>
                     <b>Full name</b>: {profile.fullName}
