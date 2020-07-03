@@ -1,3 +1,12 @@
+/*Auxiliary class CSS for button*/
+.but {
+    border-radius: 20px;
+    cursor: pointer;
+    background-color: white;
+    font-weight: bold;
+}
+
+/*Components for form*/
 .errorTextarea {
     border: solid black 1px;
 }
@@ -10,19 +19,32 @@
     color: red;
 }
 
-.commonError{
+/*Info about user form*/
+.commonError {
     border: solid red 1px;
     color: red;
 }
 
+/*Login*/
 .errorLogin {
     padding-top: 5px;
     padding-bottom: 5px;
 }
 
-.but {
-    border-radius: 20px;
+/*Paginator*/
+.paginator {
     cursor: pointer;
-    background-color: white;
+    margin: 10px;
+}
+
+.selectPage {
     font-weight: bold;
+    border-color: black;
+}
+
+.pageNumber {
+    border: solid 1px grey;
+    margin: 2px;
+    padding: 2px;
+    text-align: center;
 }
