@@ -1,0 +1,13 @@
+.container h2 {
+    font-size: 30px;
+    text-align: center;
+    background-color: sandybrown;
+}
+
+.musicBox {
+    background: #fff;
+    border: black 1px solid;
+    margin: 0 4rem 4rem 4rem;
+    padding-right: 2rem;
+    padding-left: 2rem;
+}
