@@ -4,7 +4,7 @@ import Preloader from "../../../auxiliary/preloader";
 import ProfileStatus from "../ProfileStatus/ProfileStatus";
 import avaUser from "../../../image/avaUser.png"
 import InfoAboutUser from "./InfoAboutUser";
-import InfoAboutUserFrom from "./InfoAboutUserForm";
+import InfoAboutUserForm from "./InfoAboutUserForm";
 
 const ProfileInfo = ({profile, isOwner, savePhoto, photos, ...props}) => {
     const setState = useState(false);
@@ -48,7 +48,7 @@ const ProfileInfo = ({profile, isOwner, savePhoto, photos, ...props}) => {
             </div>
             <div className={PI.wrapperInfoUser}>
                 {editMode
-                    ? <InfoAboutUserFrom initialValues={profile} profile={profile} onSubmit={onSubmit}
+                    ? <InfoAboutUserForm initialValues={profile} profile={profile} onSubmit={onSubmit}
                                          editMode={editMode} deactivatedEditMode={deactivatedEditMode}
                     />
                     : <InfoAboutUser profile={profile} editMode={editMode} isOwner={isOwner}

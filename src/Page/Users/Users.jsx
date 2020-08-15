@@ -2,7 +2,7 @@ import React from "react";
 import Paginator from "../../auxiliary/Paginator";
 import User from "./User";
 
-const Users = (props) => {
+const Users = React.memo(function Users(props) {
     return (
         <div>
 
@@ -11,7 +11,7 @@ const Users = (props) => {
                 pageSize={props.pageSize}
                 currentPage={props.currentPage}
                 onChangedPageNumber={props.onChangedPageNumber}
-                portionSize ={7}
+                portionSize ={15}
             />
             <User
                 users={props.users}
@@ -21,7 +21,7 @@ const Users = (props) => {
             />
         </div>
     )
-};
+});
 
 export default Users;
 
