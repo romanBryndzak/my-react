@@ -50,7 +50,7 @@ const Login = (props) => {
     }
 
     return (
-        <div>
+        <div style={{margin:'1rem'}}>
             <h1>Login</h1>
             <LoginReduxForm onSubmit={onSubmit} captchaUrl={props.captchaUrl}/>
         </div>
