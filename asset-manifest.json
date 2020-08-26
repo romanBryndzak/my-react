@@ -1,21 +1,21 @@
 {
   "files": {
     "main.css": "/my-react/static/css/main.a4b28925.chunk.css",
-    "main.js": "/my-react/static/js/main.26c546b4.chunk.js",
-    "main.js.map": "/my-react/static/js/main.26c546b4.chunk.js.map",
-    "runtime-main.js": "/my-react/static/js/runtime-main.642eca85.js",
-    "runtime-main.js.map": "/my-react/static/js/runtime-main.642eca85.js.map",
+    "main.js": "/my-react/static/js/main.470e7fb9.chunk.js",
+    "main.js.map": "/my-react/static/js/main.470e7fb9.chunk.js.map",
+    "runtime-main.js": "/my-react/static/js/runtime-main.3107bc64.js",
+    "runtime-main.js.map": "/my-react/static/js/runtime-main.3107bc64.js.map",
     "static/js/2.31d91c13.chunk.js": "/my-react/static/js/2.31d91c13.chunk.js",
     "static/js/2.31d91c13.chunk.js.map": "/my-react/static/js/2.31d91c13.chunk.js.map",
     "static/js/3.b3d49f65.chunk.js": "/my-react/static/js/3.b3d49f65.chunk.js",
     "static/js/3.b3d49f65.chunk.js.map": "/my-react/static/js/3.b3d49f65.chunk.js.map",
     "static/css/4.560abbae.chunk.css": "/my-react/static/css/4.560abbae.chunk.css",
-    "static/js/4.64c731e0.chunk.js": "/my-react/static/js/4.64c731e0.chunk.js",
-    "static/js/4.64c731e0.chunk.js.map": "/my-react/static/js/4.64c731e0.chunk.js.map",
+    "static/js/4.da95f5d6.chunk.js": "/my-react/static/js/4.da95f5d6.chunk.js",
+    "static/js/4.da95f5d6.chunk.js.map": "/my-react/static/js/4.da95f5d6.chunk.js.map",
     "static/js/5.0167a46c.chunk.js": "/my-react/static/js/5.0167a46c.chunk.js",
     "static/js/5.0167a46c.chunk.js.map": "/my-react/static/js/5.0167a46c.chunk.js.map",
     "index.html": "/my-react/index.html",
-    "precache-manifest.742370e91385684561c7485b1943d87f.js": "/my-react/precache-manifest.742370e91385684561c7485b1943d87f.js",
+    "precache-manifest.0dc080487bf34ea0fb27b87b416f5a87.js": "/my-react/precache-manifest.0dc080487bf34ea0fb27b87b416f5a87.js",
     "service-worker.js": "/my-react/service-worker.js",
     "static/css/4.560abbae.chunk.css.map": "/my-react/static/css/4.560abbae.chunk.css.map",
     "static/css/main.a4b28925.chunk.css.map": "/my-react/static/css/main.a4b28925.chunk.css.map",
@@ -24,9 +24,9 @@
     "static/media/preloader_64px.svg": "/my-react/static/media/preloader_64px.50aac17a.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.642eca85.js",
+    "static/js/runtime-main.3107bc64.js",
     "static/js/2.31d91c13.chunk.js",
     "static/css/main.a4b28925.chunk.css",
-    "static/js/main.26c546b4.chunk.js"
+    "static/js/main.470e7fb9.chunk.js"
   ]
 }
